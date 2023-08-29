@@ -1,0 +1,2931 @@
+fileFormatVersion: 2
+guid: f05090b4d60dcfc4487bc11b86eac372
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 59
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ryu-short_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1792
+        width: 59
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c9632504648b8141b31f5edfa67296f
+      internalID: 1889676966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_1
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1792
+        width: 60
+        height: 89
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09c5fce6b26a9114694d9f2bfb6a8801
+      internalID: -818655190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_2
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 1792
+        width: 59
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 648a132b549ccd5449b132aaf6c0b70c
+      internalID: 198097264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_3
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 1792
+        width: 55
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c45896f87cb689439a0c62df168a4be
+      internalID: 1724496138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_4
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 1792
+        width: 58
+        height: 92
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a4afe795cd94f14486421cbd3cfc654
+      internalID: -1399750087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1792
+        width: 54
+        height: 95
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0128585900dade449ea36e4ac69ee50
+      internalID: 900438065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_6
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1792
+        width: 58
+        height: 97
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b6c57adf07bc814bb15ccf331ca387f
+      internalID: -771435497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_7
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1791
+        width: 54
+        height: 94
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3205b3a8d461a8548915f5eac4288676
+      internalID: -45114338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_9
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1677
+        width: 53
+        height: 83
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60d4946001b6aac4bbc867625fffec33
+      internalID: 540486700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_10
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1677
+        width: 60
+        height: 88
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9430df0b7f0b88b46b85ab8633b4d93e
+      internalID: 2045700175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_11
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 1676
+        width: 64
+        height: 92
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17bd86b5390d08a43bbac4704e9925e1
+      internalID: -903779003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_12
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 1678
+        width: 63
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2716e515ba6be284aa6abaa940fe8176
+      internalID: -126790497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_13
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 1677
+        width: 54
+        height: 91
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b72f7eea5b05e024ea53acdfd111f9ab
+      internalID: 1922850593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_14
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1676
+        width: 50
+        height: 89
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecb6fa63c5378b14896cf7dfc468a053
+      internalID: -1286657474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_15
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 1678
+        width: 61
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1ab349983c005244a21980b06dd2732
+      internalID: -1593108224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_16
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 1677
+        width: 59
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a71e268cbc24f41adfbb29b2d2b0c6
+      internalID: 2063550879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_17
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 1678
+        width: 57
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06f46d7dd2b0e564391978cb70df2848
+      internalID: 777349173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_18
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 1679
+        width: 58
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e541828394f1a74dbdd4830533ac252
+      internalID: 1740237839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_19
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 1677
+        width: 58
+        height: 91
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b16def89c733bb244ba98dcf37d4de3d
+      internalID: 1947068708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_20
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 1678
+        width: 57
+        height: 89
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2885bfdd51279e4439f1c060e423d93d
+      internalID: -444475042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_21
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1533
+        width: 64
+        height: 91
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5983689a15921c74e88deb5648cb5daf
+      internalID: -1368557326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_22
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 1533
+        width: 92
+        height: 91
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfbc742643d9e1d4a8735542940804f7
+      internalID: 697595758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_23
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 1533
+        width: 60
+        height: 94
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b200775d145b6f4983b34c714d8ed2b
+      internalID: -1770506092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_24
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 1533
+        width: 74
+        height: 95
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08f317b8d24adf04ba9acec4a13e681b
+      internalID: 222771552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_25
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1534
+        width: 108
+        height: 94
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8654051f93e8c1d4f8600ee22bd5723f
+      internalID: -1985691464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_26
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 1533
+        width: 60
+        height: 94
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f53d184dabb4c4a9d353709e45c752
+      internalID: 1443758907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_27
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 1537
+        width: 66
+        height: 92
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ec90cfee52620147a7e340a19c640a6
+      internalID: -1759475499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_28
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 1537
+        width: 114
+        height: 94
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4546241d7243df14fb76a1d621c5e6f1
+      internalID: -1580063030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_29
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1363
+        width: 55
+        height: 85
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e43a3a6df7d8004ca645b0bc72d6645
+      internalID: -1636265168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_30
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1368
+        width: 56
+        height: 104
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78737e8d1268b404097fccdd2ddd0383
+      internalID: 1251266280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_31
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 1393
+        width: 50
+        height: 97
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f50a70a976968419602cb7fda46934
+      internalID: 1246278299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_32
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1420
+        width: 54
+        height: 77
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 063dc8db50f96c44a99eae3c1e2d2507
+      internalID: 887276830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_33
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 1412
+        width: 48
+        height: 70
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad44575e2e5b8b54c92c034ec324a11e
+      internalID: 1636482432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_34
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 1396
+        width: 48
+        height: 89
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f57da9f1e1b9994eac9ada63b3ee73e
+      internalID: 724324309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_35
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1367
+        width: 55
+        height: 109
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 394688bc5ceb8af4f8a48fc5364ea6ff
+      internalID: 1598344098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_36
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 1369
+        width: 55
+        height: 103
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df0348f1ae6b0194fac1abed0d99a493
+      internalID: 1062574088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_37
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 1404
+        width: 61
+        height: 78
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d10dbf174e76b924da65efef9c2aeb0b
+      internalID: 111958413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_38
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 1442
+        width: 104
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a0d6b0fb7cebed4c8a099de17c5e73d
+      internalID: 2139686994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_39
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1422
+        width: 53
+        height: 82
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ccca77d2a797c741a143a7d96447b5c
+      internalID: 1905704349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_40
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 1443
+        width: 122
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d439ef2cc47c8cd4083df426ac121f1a
+      internalID: 1306981415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_41
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 1402
+        width: 71
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd04787d45440314abdf69172d5aa0dd
+      internalID: 1407140415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_42
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 1384
+        width: 55
+        height: 109
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53727fb85a7bc354fb5de1d3d6fb0c6e
+      internalID: 1467255314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_43
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1239
+        width: 52
+        height: 69
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e97146da207b9ba4589afba51df533a0
+      internalID: -606464596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_44
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1239
+        width: 81
+        height: 71
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36bc1c555a15ee34d8512de06f63e2d4
+      internalID: 137578429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_45
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 1239
+        width: 52
+        height: 69
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee231f3251c74b24d9eef2cd6b418aed
+      internalID: 1567212100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_46
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 1239
+        width: 69
+        height: 77
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60d84e79be0a8be4094e6ccb5735cc35
+      internalID: 1089243976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_47
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 1239
+        width: 88
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 271eeb2f53ca7ea49a1ef175f69880cd
+      internalID: -58544515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_48
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 1239
+        width: 50
+        height: 89
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad6c97ebba2c1d4e8f7ce3e352030cd
+      internalID: 74622542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_49
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 1239
+        width: 76
+        height: 92
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c59d21ca2b5a4064183e2bcbfd566dd6
+      internalID: -1761171452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_58
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 1120
+        width: 59
+        height: 76
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f755c63023ccf84458f45113577f281b
+      internalID: 141024861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_59
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1120
+        width: 63
+        height: 72
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5eb2fb357007194c9046c9852232a65
+      internalID: 456700399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_60
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 1129
+        width: 110
+        height: 62
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1e2a3076136b414282b2082f01e1f26
+      internalID: -1138501400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_61
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1000
+        width: 53
+        height: 83
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b738a291823acf844ac9aa86df8b46d0
+      internalID: -1557739202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_62
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 999
+        width: 57
+        height: 69
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 533fad3c4986e694c8c9b1dfa19b6602
+      internalID: -1366097901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_63
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 999
+        width: 61
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 096856a2dbaa64140a78ab93bcfd9300
+      internalID: -1963002018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_64
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 999
+        width: 53
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60464006efd5a5344b25a463540d3452
+      internalID: 1660244785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_65
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 1000
+        width: 52
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04de1528b33a5ff409bf88856e14195a
+      internalID: 851049221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_66
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 1000
+        width: 53
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1732d3353dc73ce439b9491149c7a2c8
+      internalID: 579463893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_68
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 890
+        width: 69
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6b2d81401fbf1e4e9e6d2b84096ccca
+      internalID: -1323261570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_69
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 890
+        width: 95
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35cfedf337e28e049a91880b275f6159
+      internalID: 117699915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_70
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 890
+        width: 64
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72a8c22b0bab6ba44abe14a3c22d4e8f
+      internalID: -1106463549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_71
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 890
+        width: 66
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249ece41abaff274d91cec4fab39663a
+      internalID: -830583069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_72
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 890
+        width: 92
+        height: 62
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 546f0f74f1e20914e8d228efd4b16cd2
+      internalID: 941800229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_77
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 787
+        width: 70
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7742f47eda328be4f9429a23f8ba1d3a
+      internalID: -1931264078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_78
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 786
+        width: 97
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f07f03ba7dd4c45bff8f6b9ad40ba6
+      internalID: 1493572047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_79
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 787
+        width: 146
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e96d8fd5b930cb94a9def4acf0b04b52
+      internalID: 951844104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_85
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 660
+        width: 74
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb0af9874f5111e46b749364277fcbe2
+      internalID: -743712354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_86
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 660
+        width: 85
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 144d2d80ee3c1f14cb4af3a6268dcb1b
+      internalID: -1235957155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_87
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 660
+        width: 90
+        height: 83
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a40c53af2f04034f822121b481f8ae9
+      internalID: 154650315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_88
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 660
+        width: 106
+        height: 77
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e90b0d8e8ed0f428123ca652eac309
+      internalID: 1291276662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_89
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 700
+        width: 43
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b544da4a212625a48863ac8e124fc6a4
+      internalID: -343558516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_90
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 702
+        width: 56
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e25e7cbc8148e7e41a9be1106de51b6d
+      internalID: -1948307139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_91
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 706
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e95eb73004909a409d0648eef25df78
+      internalID: -1431631504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_92
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 704
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9ea099a4a68f804ca34c480b729b757
+      internalID: -606848960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_93
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 702
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc0752db8adfe67429148380f7cd9f39
+      internalID: -471887126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_94
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 702
+        width: 8
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f7e5fc2e47950240a888c0563d4db0c
+      internalID: 1867696283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_95
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 539
+        width: 82
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 805bb77c909034d43be5b3812e29b339
+      internalID: -38175068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_96
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 539
+        width: 84
+        height: 92
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 562a778915fbd174989bc5822e5bdeb9
+      internalID: 1948646151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_97
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 539
+        width: 65
+        height: 85
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ab2b0efb83454499a9d34283754cb8
+      internalID: 2126205728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_98
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 540
+        width: 84
+        height: 76
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a6ab8b990dbce046a91c1dfc5ba7676
+      internalID: -90785376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_99
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 540
+        width: 69
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 762e82d65d4d598419800ed8b0eaa1ed
+      internalID: 1294125008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_100
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 539
+        width: 82
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc3cd5bb5885f884ca809cbf7b4217ea
+      internalID: -817316318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_101
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 540
+        width: 71
+        height: 83
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 347e761e8fdee974694fb32b1623ee71
+      internalID: 467852064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_102
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 539
+        width: 77
+        height: 63
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fbce3b3e94aeae4eb0959064271b608
+      internalID: 395741355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_103
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 539
+        width: 116
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd2dead0f5496a048a79f2aced7364f8
+      internalID: -316655110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_104
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 535
+        width: 95
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6165f69fe4453241bce093bbe4f743c
+      internalID: -1523527185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_105
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 539
+        width: 74
+        height: 69
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8b8eff35759ca84a9d74c7ae1cb2529
+      internalID: 1033861664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_106
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 402
+        width: 68
+        height: 79
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f43c819f17e409f4a9db0e18dbecd111
+      internalID: -752143571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_107
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 402
+        width: 62
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e13e5575169f7e6488d763437a589b99
+      internalID: 1615580464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_108
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 402
+        width: 68
+        height: 89
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85477334f3d453a46af11786de5e6960
+      internalID: 1553415412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_109
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 403
+        width: 72
+        height: 88
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecdd1d59c1358f248968879a5f43d57f
+      internalID: -320643001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_110
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 403
+        width: 58
+        height: 85
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17090149334667f48aac99fee332addc
+      internalID: -1090979912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_111
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 403
+        width: 66
+        height: 82
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c81009675ad2b84da6527d696cbd2f9
+      internalID: 1739255298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_112
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 412
+        width: 82
+        height: 79
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba0040515cc98f041a576c8359a8cbd5
+      internalID: 1568511858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_113
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 422
+        width: 102
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 087f0cc0fddbae64e9571403783863f3
+      internalID: -434049938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_114
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 422
+        width: 78
+        height: 80
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f274a601d1a363438f2231d277e647c
+      internalID: 1601042095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_115
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 405
+        width: 120
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3afe5d2578198e440acedcfadc7e3d53
+      internalID: 1002679213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_116
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 402
+        width: 93
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e10dad5ce293b248b978279da607abc
+      internalID: 1033467184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_117
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 403
+        width: 57
+        height: 71
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ac5ab634525b141bde3c4e1bfa5d9b
+      internalID: 119344198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_118
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 269
+        width: 47
+        height: 115
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60fb0199e675dc84182ef1e7b99c5868
+      internalID: 1808843958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_119
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 274
+        width: 80
+        height: 69
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12aff09a8d45a384fade2ecf82316f0a
+      internalID: -2108935698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_120
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 269
+        width: 54
+        height: 77
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c73bb5361af740419893294505b9212
+      internalID: 1448649708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_121
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 301
+        width: 124
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06a7fbb4ccad1c645ae8eaa5c287d435
+      internalID: 341994345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_122
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 302
+        width: 74
+        height: 66
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c29d6132761c0394cbad75fcc091376e
+      internalID: -1611020597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_123
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 301
+        width: 60
+        height: 72
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f7b1e6c9b0a07e4299d31e285ec7bd6
+      internalID: 966326838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_124
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 291
+        width: 119
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 983f4a0b41067d741a580583008daf84
+      internalID: -2047916964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_125
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 295
+        width: 123
+        height: 41
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4308c9b43b90da54ca85e58a2862e4a1
+      internalID: 1396907097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_126
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 286
+        width: 128
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c627ef75b1e170044a84fd4087b2bf30
+      internalID: 954603883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_127
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 153
+        width: 55
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16b09b06e84f78f44b0bf75c7b662698
+      internalID: 202250272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_128
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 153
+        width: 58
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5c2a444ba361e441be1cc1cede40331
+      internalID: 859184154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_129
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 154
+        width: 65
+        height: 65
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bedcf4a19f29b6428598a5125541d87
+      internalID: 1725828593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_130
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 153
+        width: 67
+        height: 65
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67440471aa869614c8a1494e4a2ba9ee
+      internalID: -1297877364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_131
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 155
+        width: 63
+        height: 92
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c6419689d569e489fa4b217fa93262
+      internalID: 1738533390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_132
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 155
+        width: 64
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe327ab7653e3ee40a649e29eca6f53a
+      internalID: 285517395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_133
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 155
+        width: 67
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7ed814e38891a747a04af898aa910bf
+      internalID: 116802556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_134
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 155
+        width: 65
+        height: 89
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d77d1060c716848b845a01a51ed317
+      internalID: 2099642765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_135
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 155
+        width: 77
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e977c6698378a7d45a9ab99f6105e4a0
+      internalID: -616929999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_136
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 18
+        width: 53
+        height: 97
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3326bfa95c38e1c4eb32e0bcc4cc835e
+      internalID: 1825816392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_137
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 18
+        width: 54
+        height: 95
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c97d9868249afc4bb216d0eb965577e
+      internalID: -1737026359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_138
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 18
+        width: 54
+        height: 95
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e90849f28a6bcb2419020ff4c01c3bb9
+      internalID: -495488233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_139
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 18
+        width: 54
+        height: 95
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92fb74e987d7f9d49ad3cb2504078715
+      internalID: 621642976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_140
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 18
+        width: 54
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8f7f2514a3d26249acbe1bf002f0c84
+      internalID: 1678853760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_141
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 20
+        width: 53
+        height: 83
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4fb79cf7ac623840aabfdfb6c5ab064
+      internalID: 1500544034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_142
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 20
+        width: 60
+        height: 88
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c87c5fdab28c4234ab4583aa1a0fe931
+      internalID: -1203382756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_143
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 20
+        width: 60
+        height: 97
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bcb3b36e9b76584b9be2bdc51c7d5a4
+      internalID: 163093207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ryu-short_144
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 20
+        width: 55
+        height: 122
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2d0e29bca781184d9a514997bdfb3fc
+      internalID: -566487483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Ryu-short_0: 1889676966
+      Ryu-short_1: -818655190
+      Ryu-short_10: 2045700175
+      Ryu-short_100: -817316318
+      Ryu-short_101: 467852064
+      Ryu-short_102: 395741355
+      Ryu-short_103: -316655110
+      Ryu-short_104: -1523527185
+      Ryu-short_105: 1033861664
+      Ryu-short_106: -752143571
+      Ryu-short_107: 1615580464
+      Ryu-short_108: 1553415412
+      Ryu-short_109: -320643001
+      Ryu-short_11: -903779003
+      Ryu-short_110: -1090979912
+      Ryu-short_111: 1739255298
+      Ryu-short_112: 1568511858
+      Ryu-short_113: -434049938
+      Ryu-short_114: 1601042095
+      Ryu-short_115: 1002679213
+      Ryu-short_116: 1033467184
+      Ryu-short_117: 119344198
+      Ryu-short_118: 1808843958
+      Ryu-short_119: -2108935698
+      Ryu-short_12: -126790497
+      Ryu-short_120: 1448649708
+      Ryu-short_121: 341994345
+      Ryu-short_122: -1611020597
+      Ryu-short_123: 966326838
+      Ryu-short_124: -2047916964
+      Ryu-short_125: 1396907097
+      Ryu-short_126: 954603883
+      Ryu-short_127: 202250272
+      Ryu-short_128: 859184154
+      Ryu-short_129: 1725828593
+      Ryu-short_13: 1922850593
+      Ryu-short_130: -1297877364
+      Ryu-short_131: 1738533390
+      Ryu-short_132: 285517395
+      Ryu-short_133: 116802556
+      Ryu-short_134: 2099642765
+      Ryu-short_135: -616929999
+      Ryu-short_136: 1825816392
+      Ryu-short_137: -1737026359
+      Ryu-short_138: -495488233
+      Ryu-short_139: 621642976
+      Ryu-short_14: -1286657474
+      Ryu-short_140: 1678853760
+      Ryu-short_141: 1500544034
+      Ryu-short_142: -1203382756
+      Ryu-short_143: 163093207
+      Ryu-short_144: -566487483
+      Ryu-short_15: -1593108224
+      Ryu-short_16: 2063550879
+      Ryu-short_17: 777349173
+      Ryu-short_18: 1740237839
+      Ryu-short_19: 1947068708
+      Ryu-short_2: 198097264
+      Ryu-short_20: -444475042
+      Ryu-short_21: -1368557326
+      Ryu-short_22: 697595758
+      Ryu-short_23: -1770506092
+      Ryu-short_24: 222771552
+      Ryu-short_25: -1985691464
+      Ryu-short_26: 1443758907
+      Ryu-short_27: -1759475499
+      Ryu-short_28: -1580063030
+      Ryu-short_29: -1636265168
+      Ryu-short_3: 1724496138
+      Ryu-short_30: 1251266280
+      Ryu-short_31: 1246278299
+      Ryu-short_32: 887276830
+      Ryu-short_33: 1636482432
+      Ryu-short_34: 724324309
+      Ryu-short_35: 1598344098
+      Ryu-short_36: 1062574088
+      Ryu-short_37: 111958413
+      Ryu-short_38: 2139686994
+      Ryu-short_39: 1905704349
+      Ryu-short_4: -1399750087
+      Ryu-short_40: 1306981415
+      Ryu-short_41: 1407140415
+      Ryu-short_42: 1467255314
+      Ryu-short_43: -606464596
+      Ryu-short_44: 137578429
+      Ryu-short_45: 1567212100
+      Ryu-short_46: 1089243976
+      Ryu-short_47: -58544515
+      Ryu-short_48: 74622542
+      Ryu-short_49: -1761171452
+      Ryu-short_5: 900438065
+      Ryu-short_50: -1358389227
+      Ryu-short_51: -1657419204
+      Ryu-short_52: -199085346
+      Ryu-short_53: -1148210058
+      Ryu-short_54: -1100232774
+      Ryu-short_55: -1388170497
+      Ryu-short_56: 1622177187
+      Ryu-short_57: -540593579
+      Ryu-short_58: 141024861
+      Ryu-short_59: 456700399
+      Ryu-short_6: -771435497
+      Ryu-short_60: -1138501400
+      Ryu-short_61: -1557739202
+      Ryu-short_62: -1366097901
+      Ryu-short_63: -1963002018
+      Ryu-short_64: 1660244785
+      Ryu-short_65: 851049221
+      Ryu-short_66: 579463893
+      Ryu-short_67: 1193294371
+      Ryu-short_68: -1323261570
+      Ryu-short_69: 117699915
+      Ryu-short_7: -45114338
+      Ryu-short_70: -1106463549
+      Ryu-short_71: -830583069
+      Ryu-short_72: 941800229
+      Ryu-short_73: 1443093061
+      Ryu-short_74: -413206405
+      Ryu-short_75: -1497220359
+      Ryu-short_76: -894899462
+      Ryu-short_77: -1931264078
+      Ryu-short_78: 1493572047
+      Ryu-short_79: 951844104
+      Ryu-short_8: -1901895043
+      Ryu-short_80: 1936612093
+      Ryu-short_81: -390684909
+      Ryu-short_82: 2120404958
+      Ryu-short_83: 555354396
+      Ryu-short_84: 1135912346
+      Ryu-short_85: -743712354
+      Ryu-short_86: -1235957155
+      Ryu-short_87: 154650315
+      Ryu-short_88: 1291276662
+      Ryu-short_89: -343558516
+      Ryu-short_9: 540486700
+      Ryu-short_90: -1948307139
+      Ryu-short_91: -1431631504
+      Ryu-short_92: -606848960
+      Ryu-short_93: -471887126
+      Ryu-short_94: 1867696283
+      Ryu-short_95: -38175068
+      Ryu-short_96: 1948646151
+      Ryu-short_97: 2126205728
+      Ryu-short_98: -90785376
+      Ryu-short_99: 1294125008
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
