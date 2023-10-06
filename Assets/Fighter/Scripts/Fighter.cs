@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Fighter : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float walkBackSpeed;
 	[SerializeField] private Fighter opponent;
+	[SerializeField] private Animator animator;
 
 	private PlayerInput input;
 	private Rigidbody2D rb;
@@ -40,9 +42,19 @@ public class Fighter : MonoBehaviour
 		{
 			Walk(inputDirection);
 		}
+
+		UpdateAnimation(inputDirection);
 	}
 
-	private bool WillWalkBack(float inputDirection)
+    private void UpdateAnimation(float inputDirection)
+    {
+        if (animator == null) { return; }
+
+		animator.SetBool("is_walking", inputDirection != 0);
+		animator.SetFloat("walk_direction", inputDirection);
+    }
+
+    private bool WillWalkBack(float inputDirection)
 	{
 		return distanceToOpponent * inputDirection < 0;
 	}

@@ -264,6 +264,7 @@ MonoBehaviour:
   moveSpeed: 4
   walkBackSpeed: 2
   opponent: {fileID: 900905046}
+  animator: {fileID: 1707389055}
 --- !u!50 &550959346
 Rigidbody2D:
   serializedVersion: 4
@@ -392,6 +393,7 @@ MonoBehaviour:
   moveSpeed: 0
   walkBackSpeed: 0
   opponent: {fileID: 550959345}
+  animator: {fileID: 0}
 --- !u!50 &900905047
 Rigidbody2D:
   serializedVersion: 4
