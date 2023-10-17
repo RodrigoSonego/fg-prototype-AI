@@ -262,9 +262,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  walkBackSpeed: 2
+  walkBackSpeed: 2.5
   opponent: {fileID: 900905046}
   animator: {fileID: 1707389055}
+  aiControlled: 0
 --- !u!50 &550959346
 Rigidbody2D:
   serializedVersion: 4
@@ -394,6 +395,7 @@ MonoBehaviour:
   walkBackSpeed: 0
   opponent: {fileID: 550959345}
   animator: {fileID: 0}
+  aiControlled: 1
 --- !u!50 &900905047
 Rigidbody2D:
   serializedVersion: 4
