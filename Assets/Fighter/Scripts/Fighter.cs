@@ -1,14 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+
+public enum FighterState
+{
+	Idle,
+	Moving,
+	Attacking,
+	Hitstunned,
+}
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Fighter : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
-    [SerializeField] float walkBackSpeed;
+	[SerializeField] float moveSpeed;
+	[SerializeField] float walkBackSpeed;
 	[SerializeField] private Fighter opponent;
 	[SerializeField] private Animator animator;
 	[SerializeField] private bool aiControlled = false;
@@ -32,33 +39,37 @@ public class Fighter : MonoBehaviour
 		input.Fighter.Enable();
 		input.Fighter.Attack.performed += OnAttackPressed;
 
-		if(opponent ==  null) { return; }
+		if (opponent == null) { return; }
 		print(opponent.name);
 	}
 
-    private void OnAttackPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
-    {
+	private void OnAttackPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+	{
 		if (canAct == false) { return; }
 
 		animator.SetTrigger("punch");
 
 		StartCoroutine(DisableMovementUnitlEndOfAnimation());
-    }
+	}
 
-    private void FixedUpdate()
+	private void FixedUpdate()
 	{
-        //  TODO: deixar assim por agora mas refatorar depois com uma 
-        // estrutura melhor
-        if (aiControlled) { return; }
+		//  TODO: deixar assim por agora mas refatorar depois com uma 
+		// estrutura melhor
+		if (aiControlled) { return; }
 
 		if (canAct == false) { return; }
 
-        float inputDirection = input.Fighter.Walk.ReadValue<float>();
+		float inputDirection = input.Fighter.Walk.ReadValue<float>();
 
-		if(opponent == null ) { return; }
+		if (opponent == null)
+		{
+			Debug.Log("No opponent found, will not take inputs");
+			return;
+		}
 		distanceToOpponent = opponent.transform.position.x - rb.position.x;
 
-		if(WillWalkBack(inputDirection))
+		if (WillWalkBack(inputDirection))
 		{
 			WalkBack(inputDirection);
 		}
@@ -70,15 +81,15 @@ public class Fighter : MonoBehaviour
 		UpdateAnimation(inputDirection);
 	}
 
-    private void UpdateAnimation(float inputDirection)
-    {
-        if (animator == null) { return; }
+	private void UpdateAnimation(float inputDirection)
+	{
+		if (animator == null) { return; }
 
 		animator.SetBool("is_walking", inputDirection != 0);
 		animator.SetFloat("walk_direction", inputDirection);
-    }
+	}
 
-    private bool WillWalkBack(float inputDirection)
+	private bool WillWalkBack(float inputDirection)
 	{
 		return distanceToOpponent * inputDirection < 0;
 	}
@@ -86,7 +97,7 @@ public class Fighter : MonoBehaviour
 	private void Walk(float direction)
 	{
 		float newX = transform.position.x + (moveSpeed * direction * Time.deltaTime);
-		rb.MovePosition(new (newX, rb.position.y));
+		rb.MovePosition(new(newX, rb.position.y));
 	}
 
 	private void WalkBack(float direction)
@@ -102,11 +113,26 @@ public class Fighter : MonoBehaviour
 		yield return new WaitForEndOfFrame();
 
 		// Only supposing we are using only layer 0
-        float animLength = animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
-		print("punch len: " + animLength);
+		float animLength = animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
 
 		yield return new WaitForSeconds(animLength);
 		yield return new WaitForEndOfFrame();
 		canAct = true;
-    }
+	}
+
+	public void TakeDamage()
+	{
+		animator.SetTrigger("damaged");
+		StartCoroutine(DisableMovementUnitlEndOfAnimation());
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Hurtbox"))
+		{
+			print("colidiu com " + collision.gameObject.name);
+			opponent.TakeDamage();
+		}
+	}
+
 }
