@@ -1,14 +1,13 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum FighterState
 {
 	Idle,
-	Moving,
+	Walking,
 	Attacking,
 	Hitstunned,
+	Blocking
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -16,20 +15,29 @@ public class Fighter : MonoBehaviour
 {
 	[SerializeField] float moveSpeed;
 	[SerializeField] float walkBackSpeed;
-	[SerializeField] private Fighter opponent;
-	[SerializeField] private Animator animator;
-	[SerializeField] private bool aiControlled = false;
+	[SerializeField] Fighter opponent;
+	[SerializeField] Animator animator;
+	[SerializeField] bool aiControlled = false;
 
 	private PlayerInput input;
 	private Rigidbody2D rb;
 
 	private float distanceToOpponent;
 
+	private FighterState state;
+	public FighterState State { get { return state; } }
+
+	// TODO: tirar isso aqui e fazer controle baseado em estado
 	private bool canAct = true;
+
+	// SERIALIZED FOR DEBUGGING THE BOT ONLY
+	[SerializeField] private bool isWalkingBack = false;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
+
+		state = FighterState.Idle;
 
 		//  TODO: deixar assim por agora mas refatorar depois com uma 
 		// estrutura melhor
@@ -49,11 +57,20 @@ public class Fighter : MonoBehaviour
 
 		animator.SetTrigger("punch");
 
+		state = FighterState.Attacking;
+
 		StartCoroutine(DisableMovementUnitlEndOfAnimation());
 	}
 
 	private void FixedUpdate()
 	{
+		distanceToOpponent = opponent.transform.position.x - rb.position.x;
+
+		bool isBlocking = isWalkingBack && opponent.State == FighterState.Attacking;
+		if (isBlocking) { state = FighterState.Blocking; }
+
+		canAct = isBlocking;
+
 		//  TODO: deixar assim por agora mas refatorar depois com uma 
 		// estrutura melhor
 		if (aiControlled) { return; }
@@ -67,15 +84,21 @@ public class Fighter : MonoBehaviour
 			Debug.Log("No opponent found, will not take inputs");
 			return;
 		}
-		distanceToOpponent = opponent.transform.position.x - rb.position.x;
 
 		if (WillWalkBack(inputDirection))
 		{
 			WalkBack(inputDirection);
+			state = FighterState.Walking;
+		}
+		else if (inputDirection == 0)
+		{
+			state = FighterState.Idle;
+			isWalkingBack = false;
 		}
 		else
 		{
 			Walk(inputDirection);
+			state = FighterState.Walking;
 		}
 
 		UpdateAnimation(inputDirection);
@@ -98,12 +121,16 @@ public class Fighter : MonoBehaviour
 	{
 		float newX = transform.position.x + (moveSpeed * direction * Time.deltaTime);
 		rb.MovePosition(new(newX, rb.position.y));
+
+		isWalkingBack = false;
 	}
 
 	private void WalkBack(float direction)
 	{
 		float newX = transform.position.x + (walkBackSpeed * direction * Time.deltaTime);
 		rb.MovePosition(new(newX, rb.position.y));
+
+		isWalkingBack = true;
 	}
 
 	IEnumerator DisableMovementUnitlEndOfAnimation()
@@ -118,11 +145,16 @@ public class Fighter : MonoBehaviour
 		yield return new WaitForSeconds(animLength);
 		yield return new WaitForEndOfFrame();
 		canAct = true;
+
+		state = FighterState.Idle;
 	}
 
 	public void TakeDamage()
 	{
 		animator.SetTrigger("damaged");
+
+		state = FighterState.Hitstunned;
+
 		StartCoroutine(DisableMovementUnitlEndOfAnimation());
 	}
 
@@ -134,5 +166,4 @@ public class Fighter : MonoBehaviour
 			opponent.TakeDamage();
 		}
 	}
-
 }

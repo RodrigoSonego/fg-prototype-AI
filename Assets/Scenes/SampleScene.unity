@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 70686936}
   - component: {fileID: 70686937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Punch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 504242861}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hitboxes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,6 +746,7 @@ MonoBehaviour:
   opponent: {fileID: 1935932039}
   animator: {fileID: 1707389055}
   aiControlled: 0
+  isWalkingBack: 0
 --- !u!50 &550959346
 Rigidbody2D:
   serializedVersion: 4
@@ -908,6 +909,7 @@ MonoBehaviour:
   opponent: {fileID: 550959345}
   animator: {fileID: 0}
   aiControlled: 1
+  isWalkingBack: 0
 --- !u!50 &900905047
 Rigidbody2D:
   serializedVersion: 4
@@ -1134,9 +1136,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   walkBackSpeed: 0
-  opponent: {fileID: 0}
+  opponent: {fileID: 550959345}
   animator: {fileID: 328090820}
   aiControlled: 1
+  isWalkingBack: 0
 --- !u!4 &1935932040
 Transform:
   m_ObjectHideFlags: 0
