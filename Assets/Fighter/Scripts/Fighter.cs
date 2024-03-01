@@ -5,6 +5,7 @@ public enum FighterState
 {
 	Idle,
 	Walking,
+	WalkingBack,
 	Attacking,
 	Hitstunned,
 	Blocking
@@ -16,8 +17,10 @@ public class Fighter : MonoBehaviour
 	[SerializeField] float moveSpeed;
 	[SerializeField] float walkBackSpeed;
 	[SerializeField] Fighter opponent;
-	[SerializeField] Animator animator;
 	[SerializeField] bool aiControlled = false;
+
+	[Space]
+	[SerializeField] FighterAnimations animations;
 
 	private PlayerInput input;
 	private Rigidbody2D rb;
@@ -26,9 +29,6 @@ public class Fighter : MonoBehaviour
 
 	private FighterState state;
 	public FighterState State { get { return state; } }
-
-	// SERIALIZED FOR DEBUGGING THE BOT ONLY
-	[SerializeField] private bool isWalkingBack = false;
 
 	private void Start()
 	{
@@ -48,21 +48,12 @@ public class Fighter : MonoBehaviour
 		print(opponent.name);
 	}
 
-	private void OnAttackPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
-	{
-		if (state != FighterState.Idle && state != FighterState.Walking) { return; }
-
-		animator.SetTrigger("punch");
-
-		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Attacking));
-	}
-
 	private void FixedUpdate()
 	{
 		distanceToOpponent = opponent.transform.position.x - rb.position.x;
 
-		bool isBlocking = isWalkingBack && opponent.State == FighterState.Attacking;
-		if ( isBlocking )
+		bool isBlocking = state == FighterState.WalkingBack && opponent.State == FighterState.Attacking;
+		if (isBlocking)
 		{
 			state = FighterState.Blocking;
 		}
@@ -71,7 +62,7 @@ public class Fighter : MonoBehaviour
 		// estrutura melhor
 		if (aiControlled) { return; }
 
-		if (state != FighterState.Walking && state != FighterState.Idle) { return; }
+		if (state != FighterState.Walking && state != FighterState.Idle && state != FighterState.WalkingBack) { return; }
 
 		float inputDirection = input.Fighter.Walk.ReadValue<float>();
 
@@ -84,12 +75,11 @@ public class Fighter : MonoBehaviour
 		if (WillWalkBack(inputDirection))
 		{
 			WalkBack(inputDirection);
-			state = FighterState.Walking;
+			state = FighterState.WalkingBack;
 		}
 		else if (inputDirection == 0)
 		{
 			state = FighterState.Idle;
-			isWalkingBack = false;
 		}
 		else
 		{
@@ -97,16 +87,16 @@ public class Fighter : MonoBehaviour
 			state = FighterState.Walking;
 		}
 
-		UpdateAnimation(inputDirection);
+		animations.UpdateAnimation(state);
 	}
 
-	private void UpdateAnimation(float inputDirection)
+	private void OnAttackPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
 	{
-		if (animator == null) { return; }
+		if (state != FighterState.Walking && state != FighterState.Idle && state != FighterState.WalkingBack) { return; }
 
-		animator.SetBool("blocking", state == FighterState.Blocking );
-		animator.SetBool("is_walking", inputDirection != 0);
-		animator.SetFloat("walk_direction", inputDirection);
+		animations.PlayPunchAnimation();
+
+		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Attacking));
 	}
 
 	private bool WillWalkBack(float inputDirection)
@@ -118,16 +108,12 @@ public class Fighter : MonoBehaviour
 	{
 		float newX = transform.position.x + (moveSpeed * direction * Time.deltaTime);
 		rb.MovePosition(new(newX, rb.position.y));
-
-		isWalkingBack = false;
 	}
 
 	private void WalkBack(float direction)
 	{
 		float newX = transform.position.x + (walkBackSpeed * direction * Time.deltaTime);
 		rb.MovePosition(new(newX, rb.position.y));
-
-		isWalkingBack = true;
 	}
 
 	IEnumerator SetStateUnitlEndOfAnimation(FighterState state)
@@ -136,8 +122,7 @@ public class Fighter : MonoBehaviour
 
 		yield return new WaitForEndOfFrame();
 
-		// Only supposing we are using only layer 0
-		float animLength = animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+		float animLength = animations.GetCurrentAnimationLength();
 
 		yield return new WaitForSeconds(animLength);
 		yield return new WaitForEndOfFrame();
@@ -153,7 +138,7 @@ public class Fighter : MonoBehaviour
 			return;
 		}
 
-		animator.SetTrigger("damaged");
+		animations.PlayDamageAnimation();
 
 		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned));
 	}

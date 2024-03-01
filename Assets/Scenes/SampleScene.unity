@@ -320,6 +320,7 @@ GameObject:
   - component: {fileID: 328090822}
   - component: {fileID: 328090821}
   - component: {fileID: 328090820}
+  - component: {fileID: 328090823}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -417,6 +418,18 @@ Transform:
   m_Father: {fileID: 1935932040}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &328090823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328090819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7517b8a5426014c941f8e78f40eaef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &364817358
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,8 +757,8 @@ MonoBehaviour:
   moveSpeed: 4
   walkBackSpeed: 2.5
   opponent: {fileID: 1935932039}
-  animator: {fileID: 1707389055}
   aiControlled: 0
+  animations: {fileID: 1707389057}
   isWalkingBack: 0
 --- !u!50 &550959346
 Rigidbody2D:
@@ -907,8 +920,8 @@ MonoBehaviour:
   moveSpeed: 0
   walkBackSpeed: 0
   opponent: {fileID: 550959345}
-  animator: {fileID: 0}
   aiControlled: 1
+  animations: {fileID: 0}
   isWalkingBack: 0
 --- !u!50 &900905047
 Rigidbody2D:
@@ -980,6 +993,7 @@ GameObject:
   - component: {fileID: 1707389054}
   - component: {fileID: 1707389056}
   - component: {fileID: 1707389055}
+  - component: {fileID: 1707389057}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -1077,6 +1091,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1707389057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707389053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7517b8a5426014c941f8e78f40eaef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1935932037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,8 +1163,8 @@ MonoBehaviour:
   moveSpeed: 0
   walkBackSpeed: 0
   opponent: {fileID: 550959345}
-  animator: {fileID: 328090820}
   aiControlled: 1
+  animations: {fileID: 328090823}
   isWalkingBack: 0
 --- !u!4 &1935932040
 Transform:
