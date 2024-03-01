@@ -27,9 +27,6 @@ public class Fighter : MonoBehaviour
 	private FighterState state;
 	public FighterState State { get { return state; } }
 
-	// TODO: tirar isso aqui e fazer controle baseado em estado
-	private bool canAct = true;
-
 	// SERIALIZED FOR DEBUGGING THE BOT ONLY
 	[SerializeField] private bool isWalkingBack = false;
 
@@ -53,13 +50,11 @@ public class Fighter : MonoBehaviour
 
 	private void OnAttackPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
 	{
-		if (canAct == false) { return; }
+		if (state != FighterState.Idle && state != FighterState.Walking) { return; }
 
 		animator.SetTrigger("punch");
 
-		state = FighterState.Attacking;
-
-		StartCoroutine(DisableMovementUnitlEndOfAnimation());
+		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Attacking));
 	}
 
 	private void FixedUpdate()
@@ -67,15 +62,16 @@ public class Fighter : MonoBehaviour
 		distanceToOpponent = opponent.transform.position.x - rb.position.x;
 
 		bool isBlocking = isWalkingBack && opponent.State == FighterState.Attacking;
-		if (isBlocking) { state = FighterState.Blocking; }
-
-		canAct = isBlocking;
+		if ( isBlocking )
+		{
+			state = FighterState.Blocking;
+		}
 
 		//  TODO: deixar assim por agora mas refatorar depois com uma 
 		// estrutura melhor
 		if (aiControlled) { return; }
 
-		if (canAct == false) { return; }
+		if (state != FighterState.Walking && state != FighterState.Idle) { return; }
 
 		float inputDirection = input.Fighter.Walk.ReadValue<float>();
 
@@ -108,6 +104,7 @@ public class Fighter : MonoBehaviour
 	{
 		if (animator == null) { return; }
 
+		animator.SetBool("blocking", state == FighterState.Blocking );
 		animator.SetBool("is_walking", inputDirection != 0);
 		animator.SetFloat("walk_direction", inputDirection);
 	}
@@ -133,9 +130,9 @@ public class Fighter : MonoBehaviour
 		isWalkingBack = true;
 	}
 
-	IEnumerator DisableMovementUnitlEndOfAnimation()
+	IEnumerator SetStateUnitlEndOfAnimation(FighterState state)
 	{
-		canAct = false;
+		this.state = state;
 
 		yield return new WaitForEndOfFrame();
 
@@ -144,18 +141,21 @@ public class Fighter : MonoBehaviour
 
 		yield return new WaitForSeconds(animLength);
 		yield return new WaitForEndOfFrame();
-		canAct = true;
 
-		state = FighterState.Idle;
+		this.state = FighterState.Idle;
 	}
 
-	public void TakeDamage()
+	public void HandleHitTaken()
 	{
+		if (state == FighterState.Blocking)
+		{
+			//TODO: pushblock stuff
+			return;
+		}
+
 		animator.SetTrigger("damaged");
 
-		state = FighterState.Hitstunned;
-
-		StartCoroutine(DisableMovementUnitlEndOfAnimation());
+		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned));
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -163,7 +163,7 @@ public class Fighter : MonoBehaviour
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Hurtbox"))
 		{
 			print("colidiu com " + collision.gameObject.name);
-			opponent.TakeDamage();
+			opponent.HandleHitTaken();
 		}
 	}
 }
