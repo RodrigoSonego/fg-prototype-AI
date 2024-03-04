@@ -20,6 +20,9 @@ public class Fighter : MonoBehaviour
 	[SerializeField] bool aiControlled = false;
 	[SerializeField] float proxityBlockRange = 5.0f;
 
+	[SerializeField] float pushBackDistance = 0.3f;
+	[SerializeField] float pushBlockDistance = 0.5f;
+
 	[Space]
 	[SerializeField] FighterAnimations animations;
 
@@ -136,13 +139,15 @@ public class Fighter : MonoBehaviour
 	{
 		if (state == FighterState.Blocking)
 		{
-			//TODO: pushblock stuff
+			opponent.ApplyPushBlock();
 			return;
 		}
 
 		animations.PlayDamageAnimation();
 
 		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned));
+
+		opponent.ApplyPushback();
 	}
 
 	private bool CanAct()
@@ -156,6 +161,22 @@ public class Fighter : MonoBehaviour
 		bool isInDistance = Mathf.Abs(distanceToOpponent) <= proxityBlockRange;
 
 		return isInDistance && isInRightState;
+	}
+
+	private void ApplyPushback()
+	{
+		int pushbackDirection = distanceToOpponent > 0 ? -1 : 1;
+
+		Vector2 newPosition = new(rb.position.x + (pushBackDistance * pushbackDirection), rb.position.y);
+		rb.MovePosition(newPosition);
+	}
+
+	private void ApplyPushBlock()
+	{
+		int pushblockDirection = distanceToOpponent > 0 ? -1 : 1;
+
+		Vector2 newPosition = new(rb.position.x + (pushBlockDistance * pushblockDirection), rb.position.y);
+		rb.MovePosition(newPosition);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
