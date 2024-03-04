@@ -28,6 +28,9 @@ public class FighterAnimations : MonoBehaviour
 			case FighterState.Hitstunned:
 				animator.SetTrigger("damaged");
 				break;
+			case FighterState.Blocking:
+				animator.SetBool("blocking", true);
+			break;
 			default:
 				break;
 		}

@@ -18,6 +18,7 @@ public class Fighter : MonoBehaviour
 	[SerializeField] float walkBackSpeed;
 	[SerializeField] Fighter opponent;
 	[SerializeField] bool aiControlled = false;
+	[SerializeField] float proxityBlockRange = 5.0f;
 
 	[Space]
 	[SerializeField] FighterAnimations animations;
@@ -27,7 +28,8 @@ public class Fighter : MonoBehaviour
 
 	private float distanceToOpponent;
 
-	private FighterState state;
+	[Tooltip("SERIALIZED FOR DEBUG ONLY!!!")]
+	[SerializeField] private FighterState state;
 	public FighterState State { get { return state; } }
 
 	private void Start()
@@ -52,19 +54,19 @@ public class Fighter : MonoBehaviour
 	{
 		distanceToOpponent = opponent.transform.position.x - rb.position.x;
 
-		bool isBlocking = state == FighterState.WalkingBack && opponent.State == FighterState.Attacking;
-		if (isBlocking)
-		{
-			state = FighterState.Blocking;
-		}
-
 		//  TODO: deixar assim por agora mas refatorar depois com uma 
 		// estrutura melhor
 		if (aiControlled) { return; }
 
-		if (state != FighterState.Walking && state != FighterState.Idle && state != FighterState.WalkingBack) { return; }
-
 		float inputDirection = input.Fighter.Walk.ReadValue<float>();
+
+		bool willBlock = WillBlock(inputDirection);
+
+		state = willBlock ? FighterState.Blocking : FighterState.Idle;
+
+		animations.SetBlocking(willBlock);
+
+		if (CanAct()) { return; }
 
 		if (opponent == null)
 		{
@@ -92,7 +94,7 @@ public class Fighter : MonoBehaviour
 
 	private void OnAttackPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
 	{
-		if (state != FighterState.Walking && state != FighterState.Idle && state != FighterState.WalkingBack) { return; }
+		if (CanAct()) { return; }
 
 		animations.PlayPunchAnimation();
 
@@ -141,6 +143,19 @@ public class Fighter : MonoBehaviour
 		animations.PlayDamageAnimation();
 
 		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned));
+	}
+
+	private bool CanAct()
+	{
+		return state != FighterState.Walking && state != FighterState.Idle && state != FighterState.WalkingBack;
+	}
+
+	private bool WillBlock(float inputDirection)
+	{
+		bool isInRightState = inputDirection == -1 && opponent.State == FighterState.Attacking;
+		bool isInDistance = Mathf.Abs(distanceToOpponent) <= proxityBlockRange;
+
+		return isInDistance && isInRightState;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

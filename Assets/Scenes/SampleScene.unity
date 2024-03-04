@@ -758,8 +758,9 @@ MonoBehaviour:
   walkBackSpeed: 2.5
   opponent: {fileID: 1935932039}
   aiControlled: 0
+  proxityBlockRange: 5
   animations: {fileID: 1707389057}
-  isWalkingBack: 0
+  state: 0
 --- !u!50 &550959346
 Rigidbody2D:
   serializedVersion: 4
@@ -921,8 +922,9 @@ MonoBehaviour:
   walkBackSpeed: 0
   opponent: {fileID: 550959345}
   aiControlled: 1
+  proxityBlockRange: 0
   animations: {fileID: 0}
-  isWalkingBack: 0
+  state: 0
 --- !u!50 &900905047
 Rigidbody2D:
   serializedVersion: 4
@@ -1164,8 +1166,9 @@ MonoBehaviour:
   walkBackSpeed: 0
   opponent: {fileID: 550959345}
   aiControlled: 1
+  proxityBlockRange: 5
   animations: {fileID: 328090823}
-  isWalkingBack: 0
+  state: 0
 --- !u!4 &1935932040
 Transform:
   m_ObjectHideFlags: 0
