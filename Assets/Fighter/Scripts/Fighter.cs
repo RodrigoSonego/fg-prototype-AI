@@ -17,7 +17,6 @@ public class Fighter : MonoBehaviour
 	[SerializeField] float moveSpeed;
 	[SerializeField] float walkBackSpeed;
 	[SerializeField] Fighter opponent;
-	[SerializeField] bool aiControlled = false;
 	[SerializeField] float proxityBlockRange = 5.0f;
 
 	[SerializeField] float pushBackDistance = 0.3f;
@@ -26,7 +25,6 @@ public class Fighter : MonoBehaviour
 	[Space]
 	[SerializeField] FighterAnimations animations;
 
-	private PlayerInput input;
 	private Rigidbody2D rb;
 
 	private float distanceToOpponent;
@@ -40,43 +38,33 @@ public class Fighter : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 
 		state = FighterState.Idle;
-
-		//  TODO: deixar assim por agora mas refatorar depois com uma 
-		// estrutura melhor
-		if (aiControlled) { return; }
-
-		input = new PlayerInput();
-		input.Fighter.Enable();
-		input.Fighter.Attack.performed += OnAttackPressed;
-
-		if (opponent == null) { return; }
-		print(opponent.name);
 	}
 
-	private void FixedUpdate()
+	public void HandleMovementInput(float inputDirection)
 	{
-		distanceToOpponent = opponent.transform.position.x - rb.position.x;
-
-		//  TODO: deixar assim por agora mas refatorar depois com uma 
-		// estrutura melhor
-		if (aiControlled) { return; }
-
-		float inputDirection = input.Fighter.Walk.ReadValue<float>();
-
-		bool willBlock = WillBlock(inputDirection);
-
-		state = willBlock ? FighterState.Blocking : FighterState.Idle;
-
-		animations.SetBlocking(willBlock);
-
-		if (CanAct()) { return; }
-
 		if (opponent == null)
 		{
 			Debug.Log("No opponent found, will not take inputs");
 			return;
 		}
+		distanceToOpponent = opponent.transform.position.x - rb.position.x;
 
+		if (CanAct() == false) { return; }
+
+		if ( WillBlock(inputDirection) )
+		{
+			SetBlockState();
+			return;
+		}
+
+		animations.SetBlocking(false);
+		Move(inputDirection);
+
+		animations.UpdateAnimation(state);
+	}
+
+	private void Move(float inputDirection)
+	{
 		if (WillWalkBack(inputDirection))
 		{
 			WalkBack(inputDirection);
@@ -91,13 +79,18 @@ public class Fighter : MonoBehaviour
 			Walk(inputDirection);
 			state = FighterState.Walking;
 		}
-
-		animations.UpdateAnimation(state);
 	}
 
-	private void OnAttackPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+	private void SetBlockState()
 	{
-		if (CanAct()) { return; }
+		state = FighterState.Blocking;
+
+		animations.SetBlocking(true);
+	}
+
+	public void OnAttackPressed()
+	{
+		if (CanAct() == false) { return; }
 
 		animations.PlayPunchAnimation();
 
@@ -139,7 +132,7 @@ public class Fighter : MonoBehaviour
 	{
 		if (state == FighterState.Blocking)
 		{
-			opponent.ApplyPushBlock();
+			opponent.ApplyPushback(isEnemyBlocking: true);
 			return;
 		}
 
@@ -147,12 +140,12 @@ public class Fighter : MonoBehaviour
 
 		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned));
 
-		opponent.ApplyPushback();
+		opponent.ApplyPushback(isEnemyBlocking: false);
 	}
 
 	private bool CanAct()
 	{
-		return state != FighterState.Walking && state != FighterState.Idle && state != FighterState.WalkingBack;
+		return state == FighterState.Walking || state == FighterState.Idle || state == FighterState.WalkingBack;
 	}
 
 	private bool WillBlock(float inputDirection)
@@ -163,19 +156,13 @@ public class Fighter : MonoBehaviour
 		return isInDistance && isInRightState;
 	}
 
-	private void ApplyPushback()
+	private void ApplyPushback(bool isEnemyBlocking)
 	{
-		int pushbackDirection = distanceToOpponent > 0 ? -1 : 1;
+		int pushDirection = distanceToOpponent > 0 ? -1 : 1;
 
-		Vector2 newPosition = new(rb.position.x + (pushBackDistance * pushbackDirection), rb.position.y);
-		rb.MovePosition(newPosition);
-	}
+		float distance = isEnemyBlocking ? pushBlockDistance : pushBackDistance;
 
-	private void ApplyPushBlock()
-	{
-		int pushblockDirection = distanceToOpponent > 0 ? -1 : 1;
-
-		Vector2 newPosition = new(rb.position.x + (pushBlockDistance * pushblockDirection), rb.position.y);
+		Vector2 newPosition = new(rb.position.x + (distance * pushDirection), rb.position.y);
 		rb.MovePosition(newPosition);
 	}
 

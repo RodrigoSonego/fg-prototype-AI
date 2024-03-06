@@ -720,6 +720,7 @@ GameObject:
   - component: {fileID: 550959344}
   - component: {fileID: 550959345}
   - component: {fileID: 550959346}
+  - component: {fileID: 550959347}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -758,9 +759,9 @@ MonoBehaviour:
   moveSpeed: 4
   walkBackSpeed: 2.5
   opponent: {fileID: 1935932039}
-  aiControlled: 0
   proxityBlockRange: 5
   pushBackDistance: 0.3
+  pushBlockDistance: 0.5
   animations: {fileID: 1707389057}
   state: 0
 --- !u!50 &550959346
@@ -790,6 +791,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &550959347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550959342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bdcad4fc784ceb4b9a6bd1e1d11551d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fighter: {fileID: 550959345}
 --- !u!1 &668660293
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,9 +937,9 @@ MonoBehaviour:
   moveSpeed: 0
   walkBackSpeed: 0
   opponent: {fileID: 550959345}
-  aiControlled: 1
   proxityBlockRange: 0
   pushBackDistance: 0
+  pushBlockDistance: 0.5
   animations: {fileID: 0}
   state: 0
 --- !u!50 &900905047
@@ -1323,9 +1337,9 @@ MonoBehaviour:
   moveSpeed: 0
   walkBackSpeed: 0
   opponent: {fileID: 550959345}
-  aiControlled: 1
   proxityBlockRange: 5
   pushBackDistance: 0
+  pushBlockDistance: 0.5
   animations: {fileID: 328090823}
   state: 0
 --- !u!4 &1935932040
