@@ -8,6 +8,7 @@ public enum FighterState
 	WalkingBack,
 	Attacking,
 	Hitstunned,
+	Blockstunned,
 	Blocking
 }
 
@@ -16,7 +17,6 @@ public class Fighter : MonoBehaviour
 {
 	[SerializeField] float moveSpeed;
 	[SerializeField] float walkBackSpeed;
-	[SerializeField] Fighter opponent;
 	[SerializeField] float proxityBlockRange = 5.0f;
 
 	[SerializeField] float pushBackDistance = 0.3f;
@@ -25,13 +25,18 @@ public class Fighter : MonoBehaviour
 	[Space]
 	[SerializeField] FighterAnimations animations;
 
-	private Rigidbody2D rb;
-
-	private float distanceToOpponent;
-
-	[Tooltip("SERIALIZED FOR DEBUG ONLY!!!")]
+	//"SERIALIZED FOR DEBUG ONLY!!!"
 	[SerializeField] private FighterState state;
 	public FighterState State { get { return state; } }
+
+	[SerializeField] Fighter opponent;
+	public Fighter Opponent { get { return opponent; } }
+
+	private Rigidbody2D rb;
+	private float distanceToOpponent;
+
+
+	private float blockstunFrames = 5;
 
 	private void Start()
 	{
@@ -49,15 +54,11 @@ public class Fighter : MonoBehaviour
 		}
 		distanceToOpponent = opponent.transform.position.x - rb.position.x;
 
-		if (CanAct() == false) { return; }
+		SetBlockState(WillBlock(inputDirection));
 
-		if ( WillBlock(inputDirection) )
-		{
-			SetBlockState();
-			return;
-		}
+		// TODO: achar uma forma de descagar e conseguir sair do block
+		if ( CanAct() == false ) { return; }
 
-		animations.SetBlocking(false);
 		Move(inputDirection);
 
 		animations.UpdateAnimation(state);
@@ -81,11 +82,15 @@ public class Fighter : MonoBehaviour
 		}
 	}
 
-	private void SetBlockState()
+	private void SetBlockState(bool isBlocking)
 	{
-		state = FighterState.Blocking;
+		if (isBlocking == false && state != FighterState.Blocking)
+		{
+			return;
+		}
 
-		animations.SetBlocking(true);
+		state = isBlocking ? FighterState.Blocking : FighterState.Idle;
+		animations.SetBlocking(isBlocking);
 	}
 
 	public void OnAttackPressed()
@@ -132,7 +137,8 @@ public class Fighter : MonoBehaviour
 	{
 		if (state == FighterState.Blocking)
 		{
-			opponent.ApplyPushback(isEnemyBlocking: true);
+			opponent.ApplyPushblock();
+			StartCoroutine(Block());
 			return;
 		}
 
@@ -140,37 +146,58 @@ public class Fighter : MonoBehaviour
 
 		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned));
 
-		opponent.ApplyPushback(isEnemyBlocking: false);
+		ApplyPushback();
 	}
 
-	private bool CanAct()
+	public bool CanAct()
 	{
 		return state == FighterState.Walking || state == FighterState.Idle || state == FighterState.WalkingBack;
 	}
 
 	private bool WillBlock(float inputDirection)
 	{
-		bool isInRightState = inputDirection == -1 && opponent.State == FighterState.Attacking;
+		float oppositeToOpponent = distanceToOpponent > 0 ? -1 : 1;
+
+		bool isInRightState = inputDirection == oppositeToOpponent && opponent.State == FighterState.Attacking;
 		bool isInDistance = Mathf.Abs(distanceToOpponent) <= proxityBlockRange;
 
 		return isInDistance && isInRightState;
 	}
 
-	private void ApplyPushback(bool isEnemyBlocking)
+	private void ApplyPushback()
 	{
 		int pushDirection = distanceToOpponent > 0 ? -1 : 1;
 
-		float distance = isEnemyBlocking ? pushBlockDistance : pushBackDistance;
-
-		Vector2 newPosition = new(rb.position.x + (distance * pushDirection), rb.position.y);
+		Vector2 newPosition = new(rb.position.x + (pushBackDistance * pushDirection), rb.position.y);
 		rb.MovePosition(newPosition);
+	}
+	
+	private void ApplyPushblock()
+	{
+		int pushDirection = distanceToOpponent < 0 ? -1 : 1;
+
+		Vector2 newPosition = new(rb.position.x + (pushBackDistance * pushDirection), rb.position.y);
+		rb.MovePosition(newPosition);
+	}
+
+	IEnumerator Block()
+	{
+		float currentFrame = 0;
+		SetBlockState(true);
+
+		while (currentFrame < blockstunFrames)
+		{
+			yield return new WaitForFixedUpdate();
+			currentFrame++;
+		}
+
+		SetBlockState(false);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Hurtbox"))
 		{
-			print("colidiu com " + collision.gameObject.name);
 			opponent.HandleHitTaken();
 		}
 	}
