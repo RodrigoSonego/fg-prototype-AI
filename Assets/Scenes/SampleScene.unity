@@ -759,7 +759,7 @@ MonoBehaviour:
   moveSpeed: 4
   walkBackSpeed: 2.5
   proxityBlockRange: 5
-  pushBackDistance: 0.3
+  pushBackDistance: 0.2
   pushBlockDistance: 0.5
   animations: {fileID: 1707389057}
   state: 0
@@ -773,13 +773,13 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550959342}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 100
+  m_AngularDrag: 100
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -946,6 +946,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5047886, y: 1.1275653}
   m_EdgeRadius: 0
+--- !u!1 &1454830495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1454830496}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1454830496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454830495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1935932040}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1707389053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1237,7 @@ MonoBehaviour:
   moveSpeed: 4
   walkBackSpeed: 2.5
   proxityBlockRange: 5
-  pushBackDistance: 0.3
+  pushBackDistance: 0.2
   pushBlockDistance: 0.5
   animations: {fileID: 328090823}
   state: 0
@@ -1225,6 +1256,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 328090822}
+  - {fileID: 1454830496}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1243,3 +1275,4 @@ MonoBehaviour:
   fighter: {fileID: 1935932039}
   moveTime: 1
   minDistanceToOpponent: 0
+  attackDistance: 2.5

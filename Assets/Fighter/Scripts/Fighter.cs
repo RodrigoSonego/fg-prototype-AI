@@ -39,6 +39,8 @@ public class Fighter : MonoBehaviour
 	/// </summary>
 	public event Action<bool> OnHitTaken;
 
+	public float DistanceToOpponent { get { return distanceToOpponent; } }
+
 	private Rigidbody2D rb;
 	private float distanceToOpponent;
 
@@ -66,14 +68,15 @@ public class Fighter : MonoBehaviour
 		distanceToOpponent = opponent.transform.position.x - rb.position.x;
 
 
-		// TODO: achar uma forma de descagar e conseguir sair do block
 		if ( CanAct() == false ) { return; }
 
-		SetBlockState(WillBlock(inputDirection));
+		if (WillBlock(inputDirection))
+		{
+			SetBlockState(true);
+			return;
+		}
 
-        // TODO: achar uma forma de descagar e conseguir sair do block
-        if (CanAct() == false) { return; }
-
+        SetBlockState(false);
         Move(inputDirection);
 
 		animations.UpdateAnimation(state);
@@ -124,6 +127,8 @@ public class Fighter : MonoBehaviour
 
 	private void Walk(float direction)
 	{
+		print(name + ": " + direction);
+
 		float newX = transform.position.x + (moveSpeed * direction * Time.deltaTime);
 		rb.MovePosition(new(newX, rb.position.y));
 	}

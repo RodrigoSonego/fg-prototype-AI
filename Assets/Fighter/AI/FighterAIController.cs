@@ -8,6 +8,7 @@ public class FighterAIController : MonoBehaviour
 
 	[SerializeField] float moveTime = 1.0f;
 	[SerializeField] float minDistanceToOpponent;
+	[SerializeField] float attackDistance = 2.5f;
 
 	bool isMoving = false;
 
@@ -20,12 +21,22 @@ public class FighterAIController : MonoBehaviour
 	{
 		if (isMoving) { return; }
 
-		float direction = Random.Range(0.0f, 1.0f) < 0.5 ? 1.0f : -1.0f;
+		int direction = GetDirection();
 
 		StartCoroutine(Move(direction));
 	}
 
-	IEnumerator Move(float direction)
+	private int GetDirection()
+	{
+		if ( IsCloserThanMinDistance() )
+		{
+			return fighter.DistanceToOpponent > 0 ? -1 : 1;
+		}
+
+		return Random.Range(0.0f, 1.0f) < 0.5f ? 1 : -1;
+    }
+
+	IEnumerator Move(int direction)
 	{
 		float timeElapsed = 0.0f;
 
@@ -36,9 +47,19 @@ public class FighterAIController : MonoBehaviour
 
 			timeElapsed += Time.deltaTime;
 
-			return timeElapsed < moveTime;
+            if (IsCloserThanMinDistance())
+            {
+				return false;
+            }
+
+            return timeElapsed < moveTime;
 		});
 
 		isMoving = false;
 	}
+
+	private bool IsCloserThanMinDistance()
+	{
+		return Mathf.Abs(fighter.DistanceToOpponent) < minDistanceToOpponent;
+    }
 }
