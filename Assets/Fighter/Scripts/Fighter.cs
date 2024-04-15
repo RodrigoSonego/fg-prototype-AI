@@ -42,7 +42,11 @@ public class Fighter : MonoBehaviour
 	private Rigidbody2D rb;
 	private float distanceToOpponent;
 
-	private float blockstunFrames = 5;
+	private int blockstunFrames = 5;
+
+	[SerializeField] private int blockOffsetFrames = 3;
+
+	Coroutine blockOffsetCoroutine = null;
 
 	private void Start()
 	{
@@ -50,6 +54,7 @@ public class Fighter : MonoBehaviour
 
 		state = FighterState.Idle;
 	}
+
 
 	public void HandleMovementInput(float inputDirection)
 	{
@@ -66,7 +71,10 @@ public class Fighter : MonoBehaviour
 
 		SetBlockState(WillBlock(inputDirection));
 
-		Move(inputDirection);
+        // TODO: achar uma forma de descagar e conseguir sair do block
+        if (CanAct() == false) { return; }
+
+        Move(inputDirection);
 
 		animations.UpdateAnimation(state);
 	}
@@ -91,18 +99,12 @@ public class Fighter : MonoBehaviour
 
 	private void SetBlockState(bool isBlocking)
 	{
-		if (isBlocking == false && state != FighterState.Blocking)
-		{
-            animations.SetBlocking(false);
-            return;
-		}
-
 		state = isBlocking ? FighterState.Blocking : FighterState.Idle;
 		animations.SetBlocking(isBlocking);
 
-		if (isBlocking)
+		if ( isBlocking )
 		{
-			StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Blocking));
+			StartCoroutine(BlockOffset());
 		}
 	}
 
@@ -152,6 +154,7 @@ public class Fighter : MonoBehaviour
 		{
 			opponent.ApplyPushback(isBlocking: true);
 			StartCoroutine(Block());
+
 			return;
 		}
 
@@ -193,6 +196,19 @@ public class Fighter : MonoBehaviour
 		{
 			yield return new WaitForFixedUpdate();
 			currentFrame++;
+		}
+
+		SetBlockState(false);
+	}
+
+	IEnumerator BlockOffset()
+	{
+		int framesElapsed = 0;
+
+		while (framesElapsed < blockOffsetFrames)
+		{
+			yield return new WaitForFixedUpdate();
+			framesElapsed++;
 		}
 
 		SetBlockState(false);

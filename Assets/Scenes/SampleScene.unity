@@ -764,6 +764,7 @@ MonoBehaviour:
   animations: {fileID: 1707389057}
   state: 0
   opponent: {fileID: 1935932039}
+  blockOffsetFrames: 10
 --- !u!50 &550959346
 Rigidbody2D:
   serializedVersion: 4
@@ -1210,6 +1211,7 @@ MonoBehaviour:
   animations: {fileID: 328090823}
   state: 0
   opponent: {fileID: 550959345}
+  blockOffsetFrames: 10
 --- !u!4 &1935932040
 Transform:
   m_ObjectHideFlags: 0
