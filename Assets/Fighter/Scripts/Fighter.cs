@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -32,9 +33,14 @@ public class Fighter : MonoBehaviour
 	[SerializeField] Fighter opponent;
 	public Fighter Opponent { get { return opponent; } }
 
+	/// <summary>
+	/// Event that triggers when Fighter takes a hit, uses a bool as parameter 
+	/// to determine if damage was done (if blocked, there is no damage)
+	/// </summary>
+	public event Action<bool> OnHitTaken;
+
 	private Rigidbody2D rb;
 	private float distanceToOpponent;
-
 
 	private float blockstunFrames = 5;
 
@@ -54,10 +60,11 @@ public class Fighter : MonoBehaviour
 		}
 		distanceToOpponent = opponent.transform.position.x - rb.position.x;
 
-		SetBlockState(WillBlock(inputDirection));
 
 		// TODO: achar uma forma de descagar e conseguir sair do block
 		if ( CanAct() == false ) { return; }
+
+		SetBlockState(WillBlock(inputDirection));
 
 		Move(inputDirection);
 
@@ -86,11 +93,17 @@ public class Fighter : MonoBehaviour
 	{
 		if (isBlocking == false && state != FighterState.Blocking)
 		{
-			return;
+            animations.SetBlocking(false);
+            return;
 		}
 
 		state = isBlocking ? FighterState.Blocking : FighterState.Idle;
 		animations.SetBlocking(isBlocking);
+
+		if (isBlocking)
+		{
+			StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Blocking));
+		}
 	}
 
 	public void OnAttackPressed()
@@ -137,7 +150,7 @@ public class Fighter : MonoBehaviour
 	{
 		if (state == FighterState.Blocking)
 		{
-			opponent.ApplyPushblock();
+			opponent.ApplyPushback(isBlocking: true);
 			StartCoroutine(Block());
 			return;
 		}
@@ -146,7 +159,7 @@ public class Fighter : MonoBehaviour
 
 		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned));
 
-		ApplyPushback();
+		ApplyPushback(isBlocking: false);
 	}
 
 	public bool CanAct()
@@ -156,27 +169,18 @@ public class Fighter : MonoBehaviour
 
 	private bool WillBlock(float inputDirection)
 	{
-		float oppositeToOpponent = distanceToOpponent > 0 ? -1 : 1;
-
-		bool isInRightState = inputDirection == oppositeToOpponent && opponent.State == FighterState.Attacking;
+		bool isInRightState = WillWalkBack(inputDirection) && opponent.State == FighterState.Attacking;
 		bool isInDistance = Mathf.Abs(distanceToOpponent) <= proxityBlockRange;
 
 		return isInDistance && isInRightState;
 	}
 
-	private void ApplyPushback()
+	private void ApplyPushback(bool isBlocking)
 	{
 		int pushDirection = distanceToOpponent > 0 ? -1 : 1;
 
-		Vector2 newPosition = new(rb.position.x + (pushBackDistance * pushDirection), rb.position.y);
-		rb.MovePosition(newPosition);
-	}
-	
-	private void ApplyPushblock()
-	{
-		int pushDirection = distanceToOpponent < 0 ? -1 : 1;
-
-		Vector2 newPosition = new(rb.position.x + (pushBackDistance * pushDirection), rb.position.y);
+		float distance = isBlocking ? pushBlockDistance : pushBackDistance;
+		Vector2 newPosition = new(rb.position.x + (distance * pushDirection), rb.position.y);
 		rb.MovePosition(newPosition);
 	}
 
