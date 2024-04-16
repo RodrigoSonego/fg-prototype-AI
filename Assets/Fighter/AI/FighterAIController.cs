@@ -8,9 +8,13 @@ public class FighterAIController : MonoBehaviour
 
 	[SerializeField] float moveTime = 1.0f;
 	[SerializeField] float minDistanceToOpponent;
+	[SerializeField] float moveForwardProbability = 0.6f;
+	[Space]
 	[SerializeField] float attackDistance = 2.5f;
+	[SerializeField] float attackProbability = 0.5f;
+    [SerializeField] float blockProbability = 0.5f;
 
-	bool isMoving = false;
+    bool isMoving = false;
 
 	private void Awake()
 	{
@@ -19,21 +23,36 @@ public class FighterAIController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (isMoving) { return; }
+		if (isMoving == false) 
+		{ 
+			StartCoroutine(Move(GetDirection()));
+		}
 
-		int direction = GetDirection();
+		DecideIfWillBlock();
+		DecideIfWillAttack();
 
-		StartCoroutine(Move(direction));
+		Debug.DrawLine(transform.position, transform.position + (Vector3.left * attackDistance), Color.red);
 	}
 
 	private int GetDirection()
 	{
 		if ( IsCloserThanMinDistance() )
 		{
-			return fighter.DistanceToOpponent > 0 ? -1 : 1;
+			return GetOppositeDirection();
 		}
 
-		return Random.Range(0.0f, 1.0f) < 0.5f ? 1 : -1;
+		return Random.Range(0.0f, 1.0f) < moveForwardProbability ? 
+			GetForwardDirection() : GetForwardDirection();
+    }
+
+    private int GetForwardDirection()
+    {
+        return fighter.DistanceToOpponent > 0 ? 1 : -1;
+    }
+
+    private int GetOppositeDirection()
+	{
+        return fighter.DistanceToOpponent > 0 ? -1 : 1;
     }
 
 	IEnumerator Move(int direction)
@@ -45,7 +64,7 @@ public class FighterAIController : MonoBehaviour
 		{
 			fighter.HandleMovementInput(direction);
 
-			timeElapsed += Time.deltaTime;
+			timeElapsed += Time.fixedDeltaTime;
 
             if (IsCloserThanMinDistance())
             {
@@ -61,5 +80,30 @@ public class FighterAIController : MonoBehaviour
 	private bool IsCloserThanMinDistance()
 	{
 		return Mathf.Abs(fighter.DistanceToOpponent) < minDistanceToOpponent;
+    }
+
+	private bool IsInAttackDistance()
+	{
+        return Mathf.Abs(fighter.DistanceToOpponent) < attackDistance;
+    }
+
+	private void DecideIfWillAttack()
+	{
+		if (IsInAttackDistance() == false) { return; }
+
+		if (Random.Range(0.0f, 1.0f) < attackProbability)
+		{
+			fighter.OnAttackPressed();
+		}
+	}
+
+    private void DecideIfWillBlock()
+    {
+        if (IsInAttackDistance() == false && fighter.Opponent.State != FighterState.Attacking) { return; }
+
+        if (Random.Range(0.0f, 1.0f) < blockProbability)
+        {
+            fighter.HandleMovementInput(GetOppositeDirection());
+        }
     }
 }

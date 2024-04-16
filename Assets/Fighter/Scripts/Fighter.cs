@@ -48,8 +48,6 @@ public class Fighter : MonoBehaviour
 
 	[SerializeField] private int blockOffsetFrames = 3;
 
-	Coroutine blockOffsetCoroutine = null;
-
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -117,7 +115,7 @@ public class Fighter : MonoBehaviour
 
 		animations.PlayPunchAnimation();
 
-		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Attacking));
+		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Attacking, 0.15f));
 	}
 
 	private bool WillWalkBack(float inputDirection)
@@ -139,7 +137,7 @@ public class Fighter : MonoBehaviour
 		rb.MovePosition(new(newX, rb.position.y));
 	}
 
-	IEnumerator SetStateUnitlEndOfAnimation(FighterState state)
+	IEnumerator SetStateUnitlEndOfAnimation(FighterState state, float offset = 0.0f)
 	{
 		this.state = state;
 
@@ -147,7 +145,7 @@ public class Fighter : MonoBehaviour
 
 		float animLength = animations.GetCurrentAnimationLength();
 
-		yield return new WaitForSeconds(animLength);
+		yield return new WaitForSeconds(animLength + offset);
 		yield return new WaitForEndOfFrame();
 
 		this.state = FighterState.Idle;
@@ -165,7 +163,7 @@ public class Fighter : MonoBehaviour
 
 		animations.PlayDamageAnimation();
 
-		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned));
+		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned, 0.2f));
 
 		ApplyPushback(isBlocking: false);
 	}
