@@ -760,7 +760,7 @@ MonoBehaviour:
   walkBackSpeed: 2.5
   proxityBlockRange: 5
   pushBackDistance: 0.2
-  pushBlockDistance: 0.5
+  pushBlockDistance: 0.4
   animations: {fileID: 1707389057}
   state: 0
   opponent: {fileID: 1935932039}
@@ -1238,7 +1238,7 @@ MonoBehaviour:
   walkBackSpeed: 2.5
   proxityBlockRange: 5
   pushBackDistance: 0.2
-  pushBlockDistance: 0.5
+  pushBlockDistance: 0.4
   animations: {fileID: 328090823}
   state: 0
   opponent: {fileID: 550959345}
@@ -1273,9 +1273,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighter: {fileID: 1935932039}
-  moveTime: 0.5
+  moveTime: 0.7
   minDistanceToOpponent: 1.5
-  moveForwardProbability: 0.6
-  attackDistance: 3
-  attackProbability: 0.4
-  blockProbability: 0.5
+  moveForwardProbability: 0.7
+  attackDistance: 2
+  attackProbability: 0.3
+  blockProbability: 0.3

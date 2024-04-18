@@ -42,7 +42,7 @@ public class FighterAIController : MonoBehaviour
 		}
 
 		return Random.Range(0.0f, 1.0f) < moveForwardProbability ? 
-			GetForwardDirection() : GetForwardDirection();
+			GetForwardDirection() : GetOppositeDirection();
     }
 
     private int GetForwardDirection()
