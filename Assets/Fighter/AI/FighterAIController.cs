@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FighterAIController : MonoBehaviour
@@ -13,12 +15,31 @@ public class FighterAIController : MonoBehaviour
 	[SerializeField] float attackDistance = 2.5f;
 	[SerializeField] float attackProbability = 0.5f;
     [SerializeField] float blockProbability = 0.5f;
+	[Space]
+	[SerializeField] int framesBetweenLearning = 15;
 
     bool isMoving = false;
+
+	private ReinforcementManager reinforcement;
+
+	private float[] lastInput;
+	private int frameCount;
+
+	private enum AgentAction
+	{
+		Attack,
+		Back,
+		None
+	}
 
 	private void Awake()
 	{
 		if (fighter == null) { print("ASSIGN FIGHTER TO CONTROLLER " + name); return; }
+	}
+
+	private void Start()
+	{
+		reinforcement = ReinforcementManager.Instance;
 	}
 
 	private void FixedUpdate()
@@ -28,10 +49,54 @@ public class FighterAIController : MonoBehaviour
 			StartCoroutine(Move(GetDirection()));
 		}
 
-		DecideIfWillBlock();
-		DecideIfWillAttack();
+		if (fighter.CanAct() == false) { return; }
 
-		Debug.DrawLine(transform.position, transform.position + (Vector3.left * attackDistance), Color.red);
+		Learn();
+
+		ChooseAndPerformAction();
+	}
+
+	private void Learn()
+	{
+		if (lastInput == null) { return; }
+
+		if (frameCount == framesBetweenLearning - 1)
+		{
+			float[] input = GetNetworkInputs();
+			float reward = CalculateReward();
+
+			reinforcement.Learn(reward, lastInput, input);
+
+			frameCount = 0;
+		}
+
+		frameCount++;
+	}
+
+	private void ChooseAndPerformAction()
+	{
+		float[] input = GetNetworkInputs();
+
+		float[] output = reinforcement.ChooseAction(input);
+
+		if (output is null) { print("é null por algum motivo"); }
+
+		AgentAction action = (AgentAction)GetIndexOfMaxValue(output);
+
+		switch (action)
+		{
+			case AgentAction.Attack:
+				fighter.OnAttackPressed();
+				break;
+			case AgentAction.Back:
+				fighter.HandleMovementInput(GetOppositeDirection());
+				break;
+			case AgentAction.None:
+				fighter.HandleMovementInput(0.0f);
+				break;
+		}
+
+		lastInput = input;
 	}
 
 	private int GetDirection()
@@ -41,7 +106,7 @@ public class FighterAIController : MonoBehaviour
 			return GetOppositeDirection();
 		}
 
-		return Random.Range(0.0f, 1.0f) < moveForwardProbability ? 
+		return UnityEngine.Random.Range(0.0f, 1.0f) < moveForwardProbability ? 
 			GetForwardDirection() : GetOppositeDirection();
     }
 
@@ -91,7 +156,7 @@ public class FighterAIController : MonoBehaviour
 	{
 		if (IsInAttackDistance() == false) { return; }
 
-		if (Random.Range(0.0f, 1.0f) < attackProbability)
+		if (UnityEngine.Random.Range(0.0f, 1.0f) < attackProbability)
 		{
 			fighter.OnAttackPressed();
 		}
@@ -101,9 +166,33 @@ public class FighterAIController : MonoBehaviour
     {
         if (IsInAttackDistance() == false && fighter.Opponent.State != FighterState.Attacking) { return; }
 
-        if (Random.Range(0.0f, 1.0f) < blockProbability)
+        if (UnityEngine.Random.Range(0.0f, 1.0f) < blockProbability)
         {
             fighter.HandleMovementInput(GetOppositeDirection());
         }
     }
+
+	private float[] GetNetworkInputs()
+	{
+		float distanceToOpponent = Vector2.Distance(fighter.transform.position, fighter.Opponent.transform.position);
+		int agentState = (int)fighter.State;
+		int opponentState = (int)fighter.State;
+
+		return new float[] { distanceToOpponent, agentState, opponentState };
+	}
+
+	private int GetIndexOfMaxValue(float[] array)
+	{
+		float maxValue = array.Max();
+
+		return Array.IndexOf(array, maxValue);
+	}
+
+	private float CalculateReward()
+	{
+		float opponentHpLost = fighter.Opponent.MaxHealth - fighter.Opponent.Health;
+		float agentHpLost = fighter.MaxHealth - fighter.Health;
+
+		return (opponentHpLost - agentHpLost) / fighter.MaxHealth;
+	}
 }
