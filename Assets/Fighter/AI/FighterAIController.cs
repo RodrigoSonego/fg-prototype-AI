@@ -23,6 +23,7 @@ public class FighterAIController : MonoBehaviour
 	private ReinforcementManager reinforcement;
 
 	private float[] lastInput;
+	private float lastDistance;
 	private int frameCount;
 
 	private enum AgentAction
@@ -40,30 +41,32 @@ public class FighterAIController : MonoBehaviour
 	private void Start()
 	{
 		reinforcement = ReinforcementManager.Instance;
+
+		fighter.OnZeroHP += OnAgentDied;
+		fighter.Opponent.OnZeroHP += OnOpponentDefeated;
 	}
 
 	private void FixedUpdate()
 	{
-		if (isMoving == false) 
-		{ 
+		if (isMoving == false)
+		{
 			StartCoroutine(Move(GetDirection()));
 		}
 
-		if (fighter.CanAct() == false) { return; }
+		Learn(CalculateReward());
 
-		Learn();
+		if (fighter.CanAct() == false) { return; }
 
 		ChooseAndPerformAction();
 	}
 
-	private void Learn()
+	private void Learn(float reward)
 	{
 		if (lastInput == null) { return; }
 
 		if (frameCount == framesBetweenLearning - 1)
 		{
 			float[] input = GetNetworkInputs();
-			float reward = CalculateReward();
 
 			reinforcement.Learn(reward, lastInput, input);
 
@@ -76,6 +79,7 @@ public class FighterAIController : MonoBehaviour
 	private void ChooseAndPerformAction()
 	{
 		float[] input = GetNetworkInputs();
+		lastDistance = fighter.DistanceToOpponent;
 
 		float[] output = reinforcement.ChooseAction(input);
 
@@ -97,6 +101,7 @@ public class FighterAIController : MonoBehaviour
 		}
 
 		lastInput = input;
+		//print($"lastDist no frame {frameCount}: {lastDistance}");
 	}
 
 	private int GetDirection()
@@ -190,9 +195,35 @@ public class FighterAIController : MonoBehaviour
 
 	private float CalculateReward()
 	{
-		float opponentHpLost = fighter.Opponent.MaxHealth - fighter.Opponent.Health;
-		float agentHpLost = fighter.MaxHealth - fighter.Health;
+		if(lastInput is null) { return 0.0f; }
 
-		return (opponentHpLost - agentHpLost) / fighter.MaxHealth;
+		//float opponentHpLost = fighter.Opponent.MaxHealth - fighter.Opponent.Health;
+		//float agentHpLost = fighter.MaxHealth - fighter.Health;
+
+		//float healthReward = (opponentHpLost - agentHpLost) / fighter.MaxHealth;
+
+		float distDelta = Mathf.Abs(fighter.DistanceToOpponent) - Mathf.Abs(lastDistance);
+		//print($"frameCount: {frameCount}, Distance: {fighter.DistanceToOpponent}, lastDistance: {lastDistance}");
+
+		if (distDelta != 0)
+		{
+			print($"last input: {lastInput[0]}, {lastInput[1]}, {lastInput[2]}");
+			print($"distDelta: {distDelta}");
+		}
+		return distDelta * 10;
+	}
+
+	private void OnAgentDied()
+	{
+		Learn(-1);
+
+		reinforcement.DecreaseEpsilon();
+	}
+
+	private void OnOpponentDefeated()
+	{
+		Learn(1);
+
+		reinforcement.DecreaseEpsilon();
 	}
 }

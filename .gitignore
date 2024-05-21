@@ -61,3 +61,4 @@ crashlytics-build.properties
 
 Assets/StreamingAssets/python-3.11.9-embed-amd64*
 *__pycache__*
+*.keras

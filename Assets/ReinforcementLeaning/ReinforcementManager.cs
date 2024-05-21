@@ -12,7 +12,6 @@ public class ReinforcementManager : MonoBehaviour
 	[SerializeField] float epsilon;
 	[SerializeField] float epsilonDecay;
 	[SerializeField] float discountFactor;
-	//[SerializeField] int framesBetweeenLearning = 15;
 
 	[Space]
 	[SerializeField] bool loadSavedModel;
