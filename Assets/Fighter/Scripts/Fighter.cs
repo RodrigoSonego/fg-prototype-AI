@@ -9,7 +9,6 @@ public enum FighterState
 	WalkingBack,
 	Attacking,
 	Hitstunned,
-	Blockstunned,
 	Blocking
 }
 
@@ -23,6 +22,9 @@ public class Fighter : MonoBehaviour
 	[SerializeField] float pushBackDistance = 0.3f;
 	[SerializeField] float pushBlockDistance = 0.5f;
 
+	[SerializeField] float maxHealth = 20;
+	[SerializeField] float health = 20;
+	[SerializeField] float damage = 1;
 	[Space]
 	[SerializeField] FighterAnimations animations;
 
@@ -32,6 +34,9 @@ public class Fighter : MonoBehaviour
 
 	[SerializeField] Fighter opponent;
 	public Fighter Opponent { get { return opponent; } }
+
+	public float Health { get { return health; } }
+	public float MaxHealth { get { return maxHealth; } }
 
 	/// <summary>
 	/// Event that triggers when Fighter takes a hit, uses a bool as parameter 
@@ -47,6 +52,8 @@ public class Fighter : MonoBehaviour
 	private int blockstunFrames = 5;
 
 	[SerializeField] private int blockOffsetFrames = 3;
+
+	public event Action OnZeroHP;
 
 	private void Start()
 	{
@@ -68,13 +75,14 @@ public class Fighter : MonoBehaviour
 
 		if ( CanAct() == false ) { return; }
 
-		if (WillBlock(inputDirection))
-		{
-			SetBlockState(true);
-			return;
-		}
+		//if (WillBlock(inputDirection))
+		//{
+		//	SetBlockState(true);
+		//	return;
+		//}
 
-        SetBlockState(false);
+  //      SetBlockState(false);
+
         Move(inputDirection);
 
 		animations.UpdateAnimation(state);
@@ -103,10 +111,10 @@ public class Fighter : MonoBehaviour
 		state = isBlocking ? FighterState.Blocking : FighterState.Idle;
 		animations.SetBlocking(isBlocking);
 
-		if ( isBlocking )
-		{
-			StartCoroutine(BlockOffset());
-		}
+		//if ( isBlocking )
+		//{
+		//	StartCoroutine(BlockOffset());
+		//}
 	}
 
 	public void OnAttackPressed()
@@ -125,8 +133,6 @@ public class Fighter : MonoBehaviour
 
 	private void Walk(float direction)
 	{
-		print(name + ": " + direction);
-
 		float newX = transform.position.x + (moveSpeed * direction * Time.deltaTime);
 		rb.MovePosition(new(newX, rb.position.y));
 	}
@@ -163,9 +169,23 @@ public class Fighter : MonoBehaviour
 
 		animations.PlayDamageAnimation();
 
+		health -= opponent.damage;
+		if (health <= 0)
+		{
+			OnZeroHP();
+			return;
+		}
+
 		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned, 0.2f));
 
 		ApplyPushback(isBlocking: false);
+	}
+
+	public void HandleBlockInput(bool isPressed)
+	{
+		if(CanBlock() == false) { return; }
+
+		SetBlockState(isPressed);
 	}
 
 	public bool CanAct()
@@ -215,6 +235,16 @@ public class Fighter : MonoBehaviour
 		}
 
 		SetBlockState(false);
+	}
+
+	private bool CanBlock()
+	{
+		return state != FighterState.Hitstunned || state != FighterState.Attacking;
+	}
+
+	public void ResetHealth()
+	{
+		health = maxHealth;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

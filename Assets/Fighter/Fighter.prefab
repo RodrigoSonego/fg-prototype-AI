@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   walkBackSpeed: 2.5
-  proxityBlockRange: 5
+  proxityBlockRange: 4.5
   pushBackDistance: 0.2
   pushBlockDistance: 0.4
   maxHealth: 20
