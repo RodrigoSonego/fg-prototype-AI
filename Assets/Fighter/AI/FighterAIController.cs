@@ -43,7 +43,11 @@ public class FighterAIController : MonoBehaviour
 		reinforcement = ReinforcementManager.Instance;
 
 		fighter.OnZeroHP += OnAgentDied;
+		fighter.OnHitTaken += OnHitTaken;
+		fighter.OnHitBlocked += OnHitBlocked;
+
 		fighter.Opponent.OnZeroHP += OnOpponentDefeated;
+		fighter.Opponent.OnHitTaken += OnDamageDone;
 	}
 
 	private void FixedUpdate()
@@ -53,7 +57,7 @@ public class FighterAIController : MonoBehaviour
 			StartCoroutine(Move(GetDirection()));
 		}
 
-		Learn(CalculateReward());
+		//Learn(CalculateReward());
 
 		if (fighter.CanAct() == false) { return; }
 
@@ -91,12 +95,14 @@ public class FighterAIController : MonoBehaviour
 		{
 			case AgentAction.Attack:
 				fighter.OnAttackPressed();
+				fighter.HandleBlockInput(isPressed: false);
 				break;
 			case AgentAction.Back:
-				fighter.HandleMovementInput(GetOppositeDirection());
+				fighter.HandleBlockInput(isPressed: true);
 				break;
 			case AgentAction.None:
 				fighter.HandleMovementInput(0.0f);
+				fighter.HandleBlockInput(isPressed: false);
 				break;
 		}
 
@@ -130,19 +136,20 @@ public class FighterAIController : MonoBehaviour
 		float timeElapsed = 0.0f;
 
 		isMoving = true;
-		yield return new WaitWhile(() =>
+		while (timeElapsed < moveTime)
 		{
+			yield return new WaitForEndOfFrame();
+
 			fighter.HandleMovementInput(direction);
 
 			timeElapsed += Time.fixedDeltaTime;
 
             if (IsCloserThanMinDistance())
             {
-				return false;
+				yield break;
             }
 
-            return timeElapsed < moveTime;
-		});
+		}
 
 		isMoving = false;
 	}
@@ -150,31 +157,6 @@ public class FighterAIController : MonoBehaviour
 	private bool IsCloserThanMinDistance()
 	{
 		return Mathf.Abs(fighter.DistanceToOpponent) < minDistanceToOpponent;
-    }
-
-	private bool IsInAttackDistance()
-	{
-        return Mathf.Abs(fighter.DistanceToOpponent) < attackDistance;
-    }
-
-	private void DecideIfWillAttack()
-	{
-		if (IsInAttackDistance() == false) { return; }
-
-		if (UnityEngine.Random.Range(0.0f, 1.0f) < attackProbability)
-		{
-			fighter.OnAttackPressed();
-		}
-	}
-
-    private void DecideIfWillBlock()
-    {
-        if (IsInAttackDistance() == false && fighter.Opponent.State != FighterState.Attacking) { return; }
-
-        if (UnityEngine.Random.Range(0.0f, 1.0f) < blockProbability)
-        {
-            fighter.HandleMovementInput(GetOppositeDirection());
-        }
     }
 
 	private float[] GetNetworkInputs()
@@ -197,33 +179,40 @@ public class FighterAIController : MonoBehaviour
 	{
 		if(lastInput is null) { return 0.0f; }
 
-		//float opponentHpLost = fighter.Opponent.MaxHealth - fighter.Opponent.Health;
-		//float agentHpLost = fighter.MaxHealth - fighter.Health;
-
-		//float healthReward = (opponentHpLost - agentHpLost) / fighter.MaxHealth;
-
 		float distDelta = Mathf.Abs(fighter.DistanceToOpponent) - Mathf.Abs(lastDistance);
-		//print($"frameCount: {frameCount}, Distance: {fighter.DistanceToOpponent}, lastDistance: {lastDistance}");
 
-		if (distDelta != 0)
-		{
-			print($"last input: {lastInput[0]}, {lastInput[1]}, {lastInput[2]}");
-			print($"distDelta: {distDelta}");
-		}
-		return distDelta * 10;
+		return distDelta;
+	}
+
+	private void LearnAndDecreaseEpsilon(float reward)
+	{
+		Learn(reward);
+
+		reinforcement.DecreaseEpsilon();
 	}
 
 	private void OnAgentDied()
 	{
-		Learn(-1);
-
-		reinforcement.DecreaseEpsilon();
+		LearnAndDecreaseEpsilon(-2);
 	}
 
 	private void OnOpponentDefeated()
 	{
-		Learn(1);
+		LearnAndDecreaseEpsilon(2);
+	}
 
-		reinforcement.DecreaseEpsilon();
+	private void OnHitTaken()
+	{
+		Learn(-1);
+	}
+
+	private void OnHitBlocked()
+	{
+		Learn(-0.1f);
+	}
+
+	private void OnDamageDone()
+	{
+		Learn(1);
 	}
 }

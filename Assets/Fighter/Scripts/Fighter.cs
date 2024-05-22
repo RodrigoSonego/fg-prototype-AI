@@ -39,10 +39,10 @@ public class Fighter : MonoBehaviour
 	public float MaxHealth { get { return maxHealth; } }
 
 	/// <summary>
-	/// Event that triggers when Fighter takes a hit, uses a bool as parameter 
-	/// to determine if damage was done (if blocked, there is no damage)
+	/// Event that triggers when Fighter takes a hit
 	/// </summary>
-	public event Action<bool> OnHitTaken;
+	public event Action OnHitTaken;
+	public event Action OnHitBlocked;
 
 	public float DistanceToOpponent { get { return distanceToOpponent; } }
 
@@ -164,6 +164,8 @@ public class Fighter : MonoBehaviour
 			opponent.ApplyPushback(isBlocking: true);
 			StartCoroutine(Block());
 
+			if(OnHitBlocked is not null) { OnHitBlocked(); }
+
 			return;
 		}
 
@@ -175,6 +177,8 @@ public class Fighter : MonoBehaviour
 			OnZeroHP();
 			return;
 		}
+
+		if (OnHitTaken is not null) { OnHitTaken(); }
 
 		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned, 0.2f));
 

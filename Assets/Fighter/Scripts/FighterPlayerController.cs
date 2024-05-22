@@ -25,8 +25,6 @@ public class FighterPlayerController : MonoBehaviour
 		bool blockPressed = input.Fighter.Block.ReadValue<float>() == 1;
 		fighter.HandleBlockInput(blockPressed);
 
-		print("block pressed: " + blockPressed);
-
 		if(blockPressed) { return; }
 
 		float inputDirection = input.Fighter.Walk.ReadValue<float>();

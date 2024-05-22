@@ -430,7 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfInputs: 3
   numberOfOutputs: 3
-  epsilon: 0
+  epsilon: 0.1
   epsilonDecay: 0.9
   discountFactor: 0.98
   loadSavedModel: 0
