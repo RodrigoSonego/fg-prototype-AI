@@ -48,6 +48,7 @@ public class FighterAIController : MonoBehaviour
 
 		fighter.Opponent.OnZeroHP += OnOpponentDefeated;
 		fighter.Opponent.OnHitTaken += OnDamageDone;
+		fighter.Opponent.OnHitBlocked += OnOpponentBlocked;
 	}
 
 	private void FixedUpdate()
@@ -58,8 +59,6 @@ public class FighterAIController : MonoBehaviour
 		}
 
 		//Learn(CalculateReward());
-
-		if (fighter.CanAct() == false) { return; }
 
 		ChooseAndPerformAction();
 	}
@@ -208,11 +207,16 @@ public class FighterAIController : MonoBehaviour
 
 	private void OnHitBlocked()
 	{
-		Learn(-0.1f);
+		Learn(-0.5f);
 	}
 
 	private void OnDamageDone()
 	{
 		Learn(1);
+	}
+
+	private void OnOpponentBlocked()
+	{
+		Learn(0.5f);
 	}
 }
