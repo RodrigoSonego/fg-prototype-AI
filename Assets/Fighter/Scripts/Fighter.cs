@@ -72,9 +72,6 @@ public class Fighter : MonoBehaviour
 		}
 		distanceToOpponent = opponent.transform.position.x - rb.position.x;
 
-
-		if ( CanAct() == false ) { return; }
-
 		//if (WillBlock(inputDirection))
 		//{
 		//	SetBlockState(true);
@@ -90,6 +87,9 @@ public class Fighter : MonoBehaviour
 
 	private void Move(float inputDirection)
 	{
+		if (CanAct() == false) { return; }
+
+
 		if (WillWalkBack(inputDirection))
 		{
 			WalkBack(inputDirection);
@@ -123,7 +123,7 @@ public class Fighter : MonoBehaviour
 
 		animations.PlayPunchAnimation();
 
-		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Attacking, 0.15f));
+		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Attacking, 0.2f));
 	}
 
 	private bool WillWalkBack(float inputDirection)
@@ -180,7 +180,7 @@ public class Fighter : MonoBehaviour
 
 		if (OnHitTaken is not null) { OnHitTaken(); }
 
-		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned, 0.2f));
+		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Hitstunned, 0.10f));
 
 		ApplyPushback(isBlocking: false);
 	}
@@ -243,7 +243,7 @@ public class Fighter : MonoBehaviour
 
 	private bool CanBlock()
 	{
-		return state != FighterState.Hitstunned || state != FighterState.Attacking;
+		return state != FighterState.Hitstunned && state != FighterState.Attacking;
 	}
 
 	public void ResetHealth()
