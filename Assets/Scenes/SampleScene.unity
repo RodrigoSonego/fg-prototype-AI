@@ -423,14 +423,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287230282}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a40e5584762ca5849b20731cd42c9614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfInputs: 3
-  numberOfOutputs: 3
-  epsilon: 0.1
+  numberOfOutputs: 5
+  epsilon: 0
   epsilonDecay: 0.9
   discountFactor: 0.98
   loadSavedModel: 0
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287230282}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9745f1a553c81c48aa6351142dea002, type: 3}
   m_Name: 
@@ -725,10 +725,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Opponent
       objectReference: {fileID: 0}
+    - target: {fileID: 5625888279231664548, guid: d6f55072f530e3d4e85a844a1220962a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7025494008019618780, guid: d6f55072f530e3d4e85a844a1220962a, type: 3}
       propertyPath: opponent
       value: 
       objectReference: {fileID: 550959345}
+    - target: {fileID: 7025494008019618780, guid: d6f55072f530e3d4e85a844a1220962a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6477882303520836734, guid: d6f55072f530e3d4e85a844a1220962a, type: 3}
     m_RemovedGameObjects: []

@@ -14,11 +14,11 @@ public class FighterAIController : MonoBehaviour
 	[Space]
 	[SerializeField] float attackDistance = 2.5f;
 	[SerializeField] float attackProbability = 0.5f;
-    [SerializeField] float blockProbability = 0.5f;
+	[SerializeField] float blockProbability = 0.5f;
 	[Space]
 	[SerializeField] int framesBetweenLearning = 15;
 
-    bool isMoving = false;
+	bool isMoving = false;
 
 	private ReinforcementManager reinforcement;
 
@@ -29,8 +29,10 @@ public class FighterAIController : MonoBehaviour
 	private enum AgentAction
 	{
 		Attack,
-		Back,
-		None
+		Block,
+		None,
+		MoveForward,
+		MoveBackward
 	}
 
 	private void Awake()
@@ -53,30 +55,36 @@ public class FighterAIController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (isMoving == false)
-		{
-			StartCoroutine(Move(GetDirection()));
-		}
+		//if (isMoving == false)
+		//{
+		//	StartCoroutine(Move(GetDirection()));
+		//}
 
-		//Learn(CalculateReward());
+		LearnAtIntervals();
 
 		ChooseAndPerformAction();
+	}
+
+	private void LearnAtIntervals()
+	{
+
+		if (frameCount == framesBetweenLearning - 1)
+		{
+			Learn(CalculateReward());
+
+			frameCount = 0;
+		}
+
+		frameCount++;
 	}
 
 	private void Learn(float reward)
 	{
 		if (lastInput == null) { return; }
 
-		if (frameCount == framesBetweenLearning - 1)
-		{
-			float[] input = GetNetworkInputs();
+		float[] input = GetNetworkInputs();
 
-			reinforcement.Learn(reward, lastInput, input);
-
-			frameCount = 0;
-		}
-
-		frameCount++;
+		reinforcement.Learn(reward, lastInput, input);
 	}
 
 	private void ChooseAndPerformAction()
@@ -90,17 +98,27 @@ public class FighterAIController : MonoBehaviour
 
 		AgentAction action = (AgentAction)GetIndexOfMaxValue(output);
 
+		print(action);
+
 		switch (action)
 		{
 			case AgentAction.Attack:
 				fighter.OnAttackPressed();
 				fighter.HandleBlockInput(isPressed: false);
 				break;
-			case AgentAction.Back:
+			case AgentAction.Block:
 				fighter.HandleBlockInput(isPressed: true);
 				break;
 			case AgentAction.None:
-				fighter.HandleMovementInput(0.0f);
+				//fighter.HandleMovementInput(0.0f);
+				fighter.HandleBlockInput(isPressed: false);
+				break;
+			case AgentAction.MoveForward:
+				StartCoroutine(Move(GetForwardDirection()));
+				fighter.HandleBlockInput(isPressed: false);
+				break;
+			case AgentAction.MoveBackward:
+				StartCoroutine(Move(GetOppositeDirection()));
 				fighter.HandleBlockInput(isPressed: false);
 				break;
 		}
@@ -132,6 +150,8 @@ public class FighterAIController : MonoBehaviour
 
 	IEnumerator Move(int direction)
 	{
+		if (isMoving) { yield break; }
+
 		float timeElapsed = 0.0f;
 
 		isMoving = true;
@@ -178,9 +198,9 @@ public class FighterAIController : MonoBehaviour
 	{
 		if(lastInput is null) { return 0.0f; }
 
-		float distDelta = Mathf.Abs(fighter.DistanceToOpponent) - Mathf.Abs(lastDistance);
+		float distDelta = Mathf.Abs(fighter.DistanceToOpponent);
 
-		return distDelta;
+		return -distDelta / 1000;
 	}
 
 	private void LearnAndDecreaseEpsilon(float reward)
@@ -197,7 +217,7 @@ public class FighterAIController : MonoBehaviour
 
 	private void OnOpponentDefeated()
 	{
-		LearnAndDecreaseEpsilon(2);
+		LearnAndDecreaseEpsilon(3);
 	}
 
 	private void OnHitTaken()
@@ -212,7 +232,7 @@ public class FighterAIController : MonoBehaviour
 
 	private void OnDamageDone()
 	{
-		Learn(1);
+		Learn(2);
 	}
 
 	private void OnOpponentBlocked()

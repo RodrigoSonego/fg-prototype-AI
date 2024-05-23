@@ -12,14 +12,14 @@ def build_model(n_input: int, n_output:int, load_model: bool) -> Model:
 
 	input = Input(batch_shape=(1, n_input))
 	x = Dense(20, activation='tanh')(input)
-	outputs = Dense(n_output, activation='tanh')(x)
+	outputs = Dense(n_output, activation='softmax')(x)
 	model = Model(inputs=input, outputs=outputs)
 	model.compile(optimizer='adam', loss='mse', metrics=['mae'])
 	return model
 
 def choose_action(input, epsilon: float, model:Model):  
 	if np.random.random() < epsilon:
-		return np.array(np.random.uniform(low=0.0, high=1.0, size=3))
+		return np.array(np.random.uniform(low=0.0, high=1.0, size=5))
 	else:
 		return np.ndarray.max(model(np.array(input), training=False).numpy(), axis=0).tolist()
 
