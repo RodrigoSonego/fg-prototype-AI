@@ -51,8 +51,8 @@ MonoBehaviour:
   proxityBlockRange: 4.5
   pushBackDistance: 0.2
   pushBlockDistance: 0.4
-  maxHealth: 20
-  health: 20
+  maxHealth: 10
+  health: 10
   damage: 1
   animations: {fileID: 5448758741787668598}
   state: 0
