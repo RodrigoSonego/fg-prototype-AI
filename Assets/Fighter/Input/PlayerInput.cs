@@ -53,6 +53,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HeavyPunch"",
+                    ""type"": ""Button"",
+                    ""id"": ""72bd4a5b-0ae9-4caf-8f12-af26479ae5de"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -110,6 +119,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Block"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfdcbd18-fb31-433e-b582-58e33a5fa90a"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyPunch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -121,6 +141,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Fighter_Walk = m_Fighter.FindAction("Walk", throwIfNotFound: true);
         m_Fighter_Attack = m_Fighter.FindAction("Attack", throwIfNotFound: true);
         m_Fighter_Block = m_Fighter.FindAction("Block", throwIfNotFound: true);
+        m_Fighter_HeavyPunch = m_Fighter.FindAction("HeavyPunch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,6 +206,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Fighter_Walk;
     private readonly InputAction m_Fighter_Attack;
     private readonly InputAction m_Fighter_Block;
+    private readonly InputAction m_Fighter_HeavyPunch;
     public struct FighterActions
     {
         private @PlayerInput m_Wrapper;
@@ -192,6 +214,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Walk => m_Wrapper.m_Fighter_Walk;
         public InputAction @Attack => m_Wrapper.m_Fighter_Attack;
         public InputAction @Block => m_Wrapper.m_Fighter_Block;
+        public InputAction @HeavyPunch => m_Wrapper.m_Fighter_HeavyPunch;
         public InputActionMap Get() { return m_Wrapper.m_Fighter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -210,6 +233,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Block.started += instance.OnBlock;
             @Block.performed += instance.OnBlock;
             @Block.canceled += instance.OnBlock;
+            @HeavyPunch.started += instance.OnHeavyPunch;
+            @HeavyPunch.performed += instance.OnHeavyPunch;
+            @HeavyPunch.canceled += instance.OnHeavyPunch;
         }
 
         private void UnregisterCallbacks(IFighterActions instance)
@@ -223,6 +249,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Block.started -= instance.OnBlock;
             @Block.performed -= instance.OnBlock;
             @Block.canceled -= instance.OnBlock;
+            @HeavyPunch.started -= instance.OnHeavyPunch;
+            @HeavyPunch.performed -= instance.OnHeavyPunch;
+            @HeavyPunch.canceled -= instance.OnHeavyPunch;
         }
 
         public void RemoveCallbacks(IFighterActions instance)
@@ -245,5 +274,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnWalk(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnBlock(InputAction.CallbackContext context);
+        void OnHeavyPunch(InputAction.CallbackContext context);
     }
 }

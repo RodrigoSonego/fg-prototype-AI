@@ -51,6 +51,11 @@ public class FighterAnimations : MonoBehaviour
 		animator.SetTrigger("punch");
 	}
 
+	public void PlayHeavyPunchAnimation()
+	{
+		animator.SetTrigger("heavy_punch");
+	}
+
 	public float GetCurrentAnimationLength()
 	{
 		// Only supposing we are using only layer 0

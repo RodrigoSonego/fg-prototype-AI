@@ -117,13 +117,14 @@ public class Fighter : MonoBehaviour
 		//}
 	}
 
-	public void OnAttackPressed()
+	public void OnAttackPressed(bool isHeavy)
 	{
 		if (CanAct() == false) { return; }
 
-		animations.PlayPunchAnimation();
+		if (isHeavy) { animations.PlayHeavyPunchAnimation(); }
+		else { animations.PlayPunchAnimation(); }
 
-		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Attacking, 0.2f));
+		StartCoroutine(SetStateUnitlEndOfAnimation(FighterState.Attacking, 0f));
 	}
 
 	private bool WillWalkBack(float inputDirection)
@@ -152,7 +153,6 @@ public class Fighter : MonoBehaviour
 		float animLength = animations.GetCurrentAnimationLength();
 
 		yield return new WaitForSeconds(animLength + offset);
-		yield return new WaitForEndOfFrame();
 
 		this.state = FighterState.Idle;
 	}

@@ -19,7 +19,7 @@ def build_model(n_input: int, n_output:int, load_model: bool) -> Model:
 
 def choose_action(input, epsilon: float, model:Model):  
 	if np.random.random() < epsilon:
-		return np.array(np.random.uniform(low=0.0, high=1.0, size=5))
+		return np.array(np.random.uniform(low=0.0, high=1.0, size=6))
 	else:
 		return np.ndarray.max(model(np.array(input), training=False).numpy(), axis=0).tolist()
 

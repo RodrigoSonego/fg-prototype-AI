@@ -27,7 +27,8 @@ public class FighterAIController : MonoBehaviour
 
 	private enum AgentAction
 	{
-		Attack,
+		LightAttack,
+		HeavyAttack,
 		Block,
 		None,
 		MoveForward,
@@ -109,8 +110,12 @@ public class FighterAIController : MonoBehaviour
 
 		switch (action)
 		{
-			case AgentAction.Attack:
-				fighter.OnAttackPressed();
+			case AgentAction.LightAttack:
+				fighter.OnAttackPressed(isHeavy: false);
+				fighter.HandleBlockInput(isPressed: false);
+				break;
+			case AgentAction.HeavyAttack:
+				fighter.OnAttackPressed(isHeavy: true);
 				fighter.HandleBlockInput(isPressed: false);
 				break;
 			case AgentAction.Block:
@@ -213,7 +218,7 @@ public class FighterAIController : MonoBehaviour
 		float distance = Mathf.Abs(fighter.DistanceToOpponent);
 
 		bool isBlockingFarAway = distance >= 5;
-		float distancePenalty = isBlockingFarAway ? 1.0f : 0.0f;
+		float distancePenalty = isBlockingFarAway ? -0.5f : 0.0f;
 
 		return (-distance / 100) + distancePenalty;
 	}
@@ -227,31 +232,35 @@ public class FighterAIController : MonoBehaviour
 
 	private void OnAgentDied()
 	{
-		LearnAndDecreaseEpsilon(-2);
+		LearnAndDecreaseEpsilon(-2.0f);
 	}
 
 	private void OnOpponentDefeated()
 	{
-		LearnAndDecreaseEpsilon(3);
+		LearnAndDecreaseEpsilon(2.0f);
 	}
 
 	private void OnHitTaken()
 	{
-		Learn(-2);
+		Learn(-1f);
+		StopAllCoroutines();
+		isMoving = false;
 	}
 
 	private void OnHitBlocked()
 	{
-		Learn(-1f);
+		Learn(-0.5f);
+		StopAllCoroutines();
+		isMoving = false;
 	}
 
 	private void OnDamageDone()
 	{
-		Learn(2);
+		Learn(1);
 	}
 
 	private void OnOpponentBlocked()
 	{
-		Learn(1f);
+		Learn(0.5f);
 	}
 }

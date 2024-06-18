@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,8 @@ public class FighterPlayerController : MonoBehaviour
 		input = new PlayerInput();
 
 		input.Fighter.Enable();
-		input.Fighter.Attack.performed += OnAttackPressed;
+		input.Fighter.Attack.performed += OnLightAttackPressed;
+		input.Fighter.HeavyPunch.performed += OnHeavyAttackPressed;
 	}
 
 	private void FixedUpdate()
@@ -31,8 +33,13 @@ public class FighterPlayerController : MonoBehaviour
 		fighter.HandleMovementInput(inputDirection);
 	}
 
-	private void OnAttackPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+	private void OnLightAttackPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
 	{
-		fighter.OnAttackPressed();
+		fighter.OnAttackPressed(isHeavy: false);
+	}
+
+	private void OnHeavyAttackPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+	{
+		fighter.OnAttackPressed(isHeavy: true);
 	}
 }
