@@ -5,6 +5,8 @@ public class GameController : MonoBehaviour
 	[SerializeField] Fighter fighter1;
 	[SerializeField] Fighter fighter2;
 
+	[SerializeField] GameUI gameUI;
+
 	public static GameController instance;
 
 	Vector3 p1InitialPos;
@@ -32,5 +34,7 @@ public class GameController : MonoBehaviour
 
 		fighter1.ResetHealth();
 		fighter2.ResetHealth();
+
+		gameUI.ResetHealthToMax();
 	}
 }
