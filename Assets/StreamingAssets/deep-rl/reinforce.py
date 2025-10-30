@@ -1,7 +1,7 @@
 import numpy as np
-from keras.api.models import Model, model_from_json
-from keras.api.layers import Input, Dense
-from keras.api.saving import load_model
+
+from keras.models import Model, model_from_json, load_model
+from keras.layers import Input, Dense
 
 def load_model_json() -> Model:
 	return load_model('rl.keras')
