@@ -2833,10 +2833,50 @@
             Set the cause associated with the exception to cause. Use NULL to clear it. There is no type check to make sure that cause is either an exception instance or None. This steals a reference to cause.
             </summary>
         </member>
+        <member name="P:Python.Runtime.RuntimeData.PostStashHook">
+            <summary>
+            Callback called as a last step in the serialization process
+            </summary>
+        </member>
+        <member name="P:Python.Runtime.RuntimeData.PreRestoreHook">
+            <summary>
+            Callback called as the first step in the deserialization process
+            </summary>
+        </member>
         <member name="M:Python.Runtime.RuntimeData.ClearCLRData">
             <summary>
             Clears the old "clr_data" entry if a previous one is present.
             </summary>
+        </member>
+        <member name="M:Python.Runtime.RuntimeData.FreeSerializationData(System.String)">
+            <summary>
+            Removes the serialization capsule from the `sys` module object.
+            </summary>
+            <remarks>
+            The serialization data must have been set with <code>StashSerializationData</code>
+            </remarks>
+            <param name="key">The name given to the capsule on the `sys` module object</param>
+        </member>
+        <member name="M:Python.Runtime.RuntimeData.StashSerializationData(System.String,System.IO.MemoryStream)">
+            <summary>
+            Stores the data in the <paramref name="stream"/> argument in a Python capsule and stores
+            the capsule on the `sys` module object with the name <paramref name="key"/>.
+            </summary>
+            <remarks>
+            No checks on pre-existing names on the `sys` module object are made.
+            </remarks>
+            <param name="key">The name given to the capsule on the `sys` module object</param>
+            <param name="stream">A MemoryStream that contains the data to be placed in the capsule</param>
+        </member>
+        <member name="M:Python.Runtime.RuntimeData.GetSerializationData(System.String)">
+            <summary>
+            Retreives the previously stored data on a Python capsule.
+            Throws if the object corresponding to the <paramref name="key"/> parameter
+            on the `sys` module object is not a capsule.
+            </summary>
+            <param name="key">The name given to the capsule on the `sys` module object</param>
+            <returns>A MemoryStream containing the previously saved serialization data.
+            The stream is empty if no name matches the key.  </returns>
         </member>
         <member name="T:Python.Runtime.TypeManager">
             <summary>
@@ -3609,9 +3649,9 @@
             corresponding Python type's operator methods.
             </summary>
         </member>
-        <member name="M:Python.Runtime.OperatorMethod.IsReverse(System.Reflection.MethodBase)">
+        <member name="M:Python.Runtime.OperatorMethod.HaveReverse(System.Reflection.MethodBase)">
             <summary>
-            Check if the method is performing a reverse operation.
+            Check if the method should have a reversed operation.
             </summary>
             <param name="method">The operator method.</param>
             <returns></returns>
